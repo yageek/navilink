@@ -2,13 +2,14 @@
 #include <stdlib.h>
 
 #include "api.h"
-extern Byte packet[];
-Byte databuffer[sizeof(Word)];
+
+Byte *databuffer = NULL;
+
 
 
 int main()
 {
-	short i,end;
+	databuffer = setPacket(PID_SYNC,0,0);
 	   
 	
 	

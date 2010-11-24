@@ -12,7 +12,7 @@ typedef unsigned char Byte;
 typedef unsigned short Word;
 
 Word getChecksum(const Byte *data, Word size);
-int setPacket( Byte type,  Byte *data, Word size);
+Byte* setPacket( Byte type,  Byte *data, Word size);
 void PrintPacket(const Byte* packet, int size);
 
 #endif // API_H_INCLUDED

@@ -1,8 +1,8 @@
 #include "api.h"
 
-Word packetLength = 0, checksum = 0, payload = 0, end =0;
-Byte packet[10] = {0xFF};
 
+Byte packet[4104]={0};
+Byte payload[4096] = {0};
 
 void PrintPacket(const Byte* packet, int size){
     int i;
@@ -26,58 +26,47 @@ Word getChecksum(const Byte *payloaddata, Word size){
 }
 
 
-int setPacket(Byte type, Byte  *data,Word size){
+Byte* setPacket(Byte type, Byte  *data,Word size){
     /* 4 octets and 30 bits equals 62 bits -> (64 bits >> 2) = ( 8 * sizeof(char) >> 2)*/
 	if( (size >0) && (data == NULL)) {
 	
 		printf("The data provided to the function are not accessible!\n");
-		return -1;
+		return NULL;
 		}
 	
-	int offset=0;
-	Byte byte=0;
-	Byte * ptr = packet;
+	Word packetLength = size +1;
+	Word word =0;
 	
-	packetLength = size + 1 ;
-	/* First two bytes */
-	packet[0] = PACK_START1;
-	packet[1] = PACK_START2;
-	ptr+=2;
-	offset+=2;
+	if(!packet){
+		printf("Could not alloc the required quantity of data!\n");
+		return NULL;
+		
+	}
+	/* Start of data */
+	word = (PACK_START1) | (PACK_START2 << 8);
+	memcpy(packet,(Byte *)&word,2);
 	
-	/* Length */
-	memcpy(ptr,&packetLength ,2);
-	ptr+=2;
-	offset+=2;
 	
-	/*Data*/
-	byte = type;
-	memcpy(ptr,&byte,1);
-	ptr+=1;
-	offset+=1;
+	/* Packet Length */
+	memcpy(&packet[2],(Byte *)&packetLength,2);
 	
-	memcpy(ptr,data,size);
-	ptr+=size;
-	offset+=size;
 	
-	/*Checksum*/
-	checksum = getChecksum((const Byte *)&payload,packetLength);
-	memcpy(ptr,&checksum,packetLength);
-	ptr+=2;
-	offset+=2;
+	/*Data and Type*/
+	memcpy(payload,(Byte *) &type,1);
+	memcpy(&payload[1],(Byte *) data,size);
+	memcpy(&packet[3],(Byte *) payload, packetLength);
 	
-	/*end*/
-	end = PACK_END1;
-	memcpy(ptr,&end,1);
-	ptr+=1;
-	offset+=1;
 	
-	end = PACK_END2;
-	memcpy(ptr,&end,1);
-	offset+=1;
 	
-	printf("Length of bytes : %d\n",offset);
-	return offset;
+	/*Checksum */
+	word = getChecksum(payload,packetLength);
+	memcpy(&packet[3+packetLength],(Byte *)&word,2);
+	
+	/*End word*/
+	word = (PACK_END1) | (PACK_END2 << 8);
+	memcpy(&packet[5+packetLength],(Byte *)&word,2);
+	
+	return packet;
 
 
 }
