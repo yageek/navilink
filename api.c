@@ -1,7 +1,13 @@
 #include "api.h"
 
+#define SetError(s) strcpy(navilinkError,s)
 
+static Byte payload[MAX_PAYLOAD_SIZE] = {0};
+static char navilinkError[ERROR_MESS_LENGTH] = "";
 
+char * NavilinkError(){
+	return navilinkError;
+}
 
 void PrintPacket(const Byte* packet, int size){
     int i;
@@ -24,24 +30,29 @@ Word getChecksum(const Byte *payloaddata, Word size){
     return checksum ;
 }
 
-Byte* setPacket(Byte type, Byte  *data,Word size){
+int setPacket(Byte *packet , Byte type, Byte  *data,Word size){
     int i;
 	Word packetLength = size +1;
-	Byte *packet = malloc(8 + packetLength),*org = packet;
-	Byte payload[MAX_PAYLOAD_SIZE] = {0};
 		
 	if( (size >0) && (data == NULL)) {
-	
-		printf("The data provided to the function are not accessible!\n");
-		return NULL;
+		
+		SetError("Data buffer is NULL and size is greater than 0 ");
+		return -1;
 		}
 	
 	/* Start of data */
+	#ifdef BIG_ENDIAN
+	*((Word *)packet) = __AdaptWord((PACK_START1) | (PACK_START2 << 8));
+	#else
 	*((Word *)packet) = (PACK_START1) | (PACK_START2 << 8);
-
+	#endif
+	
 	/* Packet Length */
+	#ifdef BIG_ENDIAN
+	*((Word *)(packet+=2)) = __AdaptWord(packetLength);
+	#else
 	*((Word *)(packet+=2)) = packetLength;
-		
+	#endif
 	
 	/*Data and Type*/
 	payload[0] = type;
@@ -54,49 +65,19 @@ Byte* setPacket(Byte type, Byte  *data,Word size){
 	
 	
 	/*Checksum */
-	*((Word *)(packet)) = getChecksum(payload,packetLength);
-		
+	#ifdef BIG_ENDIAN
+	*((Word *)packet) = __AdaptWord(getChecksum(payload,packetLength));
+	#else
+	*((Word *)packet) = getChecksum(payload,packetLength);
+	#endif
+	
 	/*End word*/
+	#ifdef BIG_ENDIAN
+	*((Word *)(packet+=2)) = __AdaptWord((PACK_END1) | (PACK_END2 << 8));
+	#else
 	*((Word *)(packet+=2)) =(PACK_END1) | (PACK_END2 << 8);
+	#endif
+	return 0;
 	
-	
-	return org;
 }
 
-int validPacket(Byte * packet){
-	
-	Word checksum = 0,packetLength = 0;
-	Byte *data;
-	
-	if((*packet!=PACK_START1) && (*(packet+1) != PACK_START2)){
-		printf("The two start bytes are not correct\n");
-		return -1;
-	}
-	packet+=2;
-	
-	/*Length of the data*/
-	memcpy(&packetLength, (Word *)packet,2);
-			
-	printf("Size of packet:%d\n",packetLength);
-	packet+=2;
-	
-	/*Look for end bytes first */
-	if((*(packet+packetLength + 2 )!=PACK_END1) && ((*(packet + packetLength + 3 )!=PACK_END2))){
-	
-		printf("No end bytes after the specified size\n");
-		return -1;
-		
-	}
-	/*Compute checksum if it is correct*/
-	
-	memcpy(&checksum,packet + packetLength,2);
-	
-	
-	if(checksum != getChecksum(packet,packetLength)){
-		printf("The checksum is not correct\n");
-		return -1;
-	}
-	
-	printf("Packet Valid\n");
-	return 1;
-}

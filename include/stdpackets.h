@@ -39,6 +39,11 @@
 #define PID_LOG_DATA_ADDR 0x1cU /* send 1 and after get Data */
 #define PID_READ_LOG_HEADER 0x50U
 
+#define MAX_PAYLOAD_SIZE 4096
+#define MAX_DATA_SIZE MAX_PAYLOAD_SIZE - 1
+#define MAX_PACKET_SIZE MAX_PAYLOAD_SIZE + 8
+#define MAX_FIELD_SIZE sizeof(short) * 14
+
 typedef struct T_ROUTE T_ROUTE;
 typedef struct T_INFORMATION T_INFORMATION;
 typedef struct T_POSITION T_POSITION;
@@ -55,17 +60,17 @@ struct T_INFORMATION{
 	unsigned int startAdrOfTrackBuffer;
 	unsigned int deviceSerialNum;
 	unsigned short numOfTrackpoints; /* 0..8191*/
-	unsigned short protovolVersion;
+	unsigned short protocolVersion;
 	//char unknown[16]; /* 16 bytes with unknown info */
 	char username[16]; /* zero byte terminated */
-} __attribute__ ((packed));
+} __attribute__((packed));
 
 
 struct T_POSITION{
     int latitude;             /*+-900000000,in 1/10000000 degree */
     int longitude;            /*+-1800000000,in 1/10000000 degree*/
     unsigned short altitude;  /*0..65535,in feet*/
-} __attribute__ ((packed));
+} __attribute__((packed));
 
 struct T_DATETIME{
     unsigned char year;    /* actual year= year+2000 */
@@ -74,7 +79,7 @@ struct T_DATETIME{
     unsigned char hour;    /* 0..23 */
     unsigned char minute;  /* 0..59 */
     unsigned char second;  /* 0..59 */
-} __attribute__ ((packed));
+} __attribute__((packed));
 
 struct T_WAYPOINT {
     unsigned short recordType; /* reserved. default 0x00 0x40*/
@@ -87,14 +92,14 @@ struct T_WAYPOINT {
     unsigned char reserved_2;
     unsigned char tag1;        /*reserved, default 0x00 */
     unsigned char tag2;        /*reserved, default 0x7e */
-} __attribute__ ((packed));
+} __attribute__((packed));
 
 struct T_SUBROUTE{
     unsigned short recordType;     /*reserved, default 0x2010 */
     unsigned short waypointID[14]; /*0..999,0xffff:NULL waypoint ID */
     unsigned char tag1;            /*0x7f for last subroute*/
     unsigned char tag2;            /*reserved , default 0x77*/
-} __attribute__ ((packed));
+} __attribute__((packed));
 
 struct T_ROUTE{
     unsigned short recordType; /*reserved, default 0x2000*/
@@ -108,7 +113,7 @@ struct T_ROUTE{
     unsigned char flag;        /* reserved, default 0x7b */
     unsigned char mark;        /* reserved, default 0x77 */
     T_SUBROUTE subRoutes[9];
-} __attribute__ ((packed));
+} __attribute__((packed));
 
  struct T_TRACKPOINT{
     unsigned short serialNum;      /*unique serial number,0..8191*/
@@ -121,7 +126,7 @@ struct T_ROUTE{
     unsigned char halfspeed;       /*in KMH, actual speed=halfspeed*2 */
     unsigned char tag1;            /*reserved, default 0x5a */
     unsigned char tag2;            /*reserved, default 0x7e */
-} __attribute__ ((packed));
+} __attribute__((packed));
 
 
 #endif // STDPACKETS_H_INCLUDED
