@@ -3,11 +3,6 @@
 
 #include "stdpackets.h"
 #include "stdlib.h"
-/* Big Endian <--> Little Endian  */
-typedef unsigned char Byte;
-typedef unsigned short Word;
-typedef unsigned int DoubleWord;
-
 
 #define __AdaptWord(val) ((Word)( \
 		(((Word)(val) & (Word)(0x00ffUL)) << 8) | \
@@ -23,11 +18,7 @@ typedef unsigned int DoubleWord;
 		((Byte)(val) & (Byte)(0x0F)) | \
 		((Byte)(val) & (Byte)(0xF0)))) 
 		
-
-
 void returnbuffer(Byte  * buffer,int size);
 void __AdaptT_INFORMATION(T_INFORMATION *x);
-
-
-
+void __AdaptT_POSITION(T_POSITION *x);
 #endif 
