@@ -32,3 +32,8 @@ void queryWaypoints(NaviGPS *dev,DoubleWord first, Word size ){
 	
 		
 }
+void free_GPS(NaviGPS * dev){
+	/* Test if connected */
+	free(dev);
+	
+}

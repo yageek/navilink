@@ -23,6 +23,7 @@ struct NaviGPS{
 NaviGPS* get_new_GPS(const char* dev);
 void display_gps_info(NaviGPS *dev);
 void queryWaypoints(NaviGPS *dev,DoubleWord first, Word size );
+void free_GPS(NaviGPS * dev);
 
 /* Serial Function */
 /** \todo implement on WIN32 */
