@@ -1,6 +1,6 @@
 #include "endianness.h"
 
-static Byte tempBuffer[MAX_FIELD_SIZE];
+static Byte tempBuffer[MAX_DATA_SIZE];
 
 void returnbuffer(Byte * buffer,int size){
 	if( buffer == NULL ||  size < 2 ){

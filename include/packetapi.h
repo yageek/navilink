@@ -1,4 +1,4 @@
-/*! \mainpage My Personal Index Page
+/*! \mainpage NAvilink API
  *
  * \section intro_sec Introduction
  *
@@ -10,7 +10,7 @@
  *  
  * etc...
  */
-/** \file api.h 
+/** \file packetapi.h 
  *	\brief Headers for the packet manipulation functions.
  */
 
@@ -73,18 +73,4 @@ int readPacket(Byte *packet, Word* Lengthofpacket, Byte *databuffer);
 *	\return The error message
 */
 char * NavilinkError();
-
-int syncGPS(NaviGPS* dev);
-int closeGPS(NaviGPS* dev);
-
-int getInfo(NaviGPS * dev);
-void displayInfo(NaviGPS *dev);
-
-NaviGPS* initGPS(const char* dev);
-void freeNaviGPS(NaviGPS * dev);
-
-void queryWaypoints(NaviGPS *dev,DoubleWord first, Word size );
-
-
-
 #endif // API_H_INCLUDED

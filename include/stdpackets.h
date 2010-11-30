@@ -97,7 +97,7 @@ typedef struct T_DATETIME T_DATETIME;
 typedef struct T_WAYPOINT T_WAYPOINT;
 typedef struct T_SUBROUTE T_SUBROUTE;
 typedef struct T_TRACKPOINT T_TRACKPOINT;
-typedef struct NaviGPS NaviGPS;
+
 
 /** \struct T_INFORMATION
  *	\brief Describe the informations about the data logger.
@@ -191,18 +191,5 @@ struct T_ROUTE{
     unsigned char tag1;            /**< reserved, default 0x5a */
     unsigned char tag2;            /**< reserved, default 0x7e */
 } __attribute__((packed));
-
-/** \struct NaviGPS
- *	\brief Structure describing a naviGPD device
- */
-struct NaviGPS{
-	char deviceName[20]; /**< COM name of the device (/dev/ttyUSB0 for exemple ) */
-	T_INFORMATION *informations;/**< Informations about the device */
-	T_WAYPOINT *waypoints;/**< List of waypoints in the device */
-	T_ROUTE *routes;/**< List of routes in the device */
-	T_TRACKPOINT *tracks;/**< List of routes in the device (seems to be not used) */
-	Byte buffer[MAX_PACKET_SIZE];/**< A buffer for transferring paxket, payload or other data */
-	Word packetLength;/**< Length of the buffer */
-};
 
 #endif // STDPACKETS_H_INCLUDED
