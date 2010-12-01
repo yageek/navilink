@@ -69,7 +69,7 @@ int setPacket(Byte *packet , Byte type, Byte  *data,Word size){
 	*((Word *)(packet+=2)) =(PACK_END1) | (PACK_END2 << 8);
 	#endif
 	
-	return 0;
+	return packetLength + 8;
 	
 }
 

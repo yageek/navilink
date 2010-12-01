@@ -31,7 +31,7 @@ int init_gps_serial_link(NaviGPS * dev){
 	tcgetattr(dev->fd,&options); /*Get the current options of the current file */
 	
 	/*Baudrate option*/
-	cfsetispeed(&options, B115200);
+	//cfsetispeed(&options, B115200);
 	cfsetospeed(&options, B115200);
 	
 	/*Control options */
@@ -45,11 +45,11 @@ int init_gps_serial_link(NaviGPS * dev){
 	options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
 	
 	/*Hardware flow control off*/
-	options.c_cflag &= ~CRTSCTS;
+	options.c_cflag |= CRTSCTS;
 
 	/*software Flow control ON*/
-	options.c_iflag |= (IXON | IXOFF | IXANY);
-	
+	//options.c_iflag |= (IXON | IXOFF | IXANY);
+	options.c_iflag &= ~(IXON | IXOFF | IXANY);
 	
 	/*Output options*/
 	options.c_oflag &= ~OPOST;/* Raw Output*/
@@ -94,9 +94,9 @@ int read_packet_from_gps(NaviGPS *dev){
 
 int write_packet_to_gps(NaviGPS *dev, Byte type, Byte *data, Word size){
 
-	setPacket(transmitbuffer,type,data,size);
+	int n = setPacket(transmitbuffer,type,data,size);
 	
-	int n = write(dev->fd,transmitbuffer,size);
+	 n = write(dev->fd,transmitbuffer,n);
 	
 	return n;
 

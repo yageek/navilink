@@ -50,6 +50,7 @@ Word getChecksum(const Byte *data, Word size);
 *	\param byte The packet ID of the packet
 *	\param data The data to send in the packet <b> without the packet </b>
 *	\param size The size of of the \p data buffer
+* 	\return The size of the pqcket to send
 */
 
 int setPacket(Byte *packet , Byte type, Byte  *data,Word size); /* For setting up a packet */
