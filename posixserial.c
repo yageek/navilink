@@ -41,26 +41,48 @@ int init_gps_serial_link(NaviGPS * dev){
 	options.c_cflag &= ~CSIZE;
 	options.c_cflag |= CS8;
 	
+	options.c_cflag|=CREAD|CLOCAL;
+    options.c_lflag&=(~(ICANON|ECHO|ECHOE|ECHOK|ECHONL|ISIG));
+    options.c_iflag&=(~(INPCK|IGNPAR|PARMRK|ISTRIP|ICRNL|IXANY));
+    options.c_oflag&=(~OPOST);
+    options.c_cc[VTIME] = 0;
+    options.c_cc[VMIN] = 1;
+	
 	/*Local options */
-	options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+	//options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
 	
 	/*Hardware flow control off*/
-	options.c_cflag |= CRTSCTS;
+	//options.c_cflag &= ~CRTSCTS;
 
 	/*software Flow control ON*/
 	//options.c_iflag |= (IXON | IXOFF | IXANY);
-	options.c_iflag &= ~(IXON | IXOFF | IXANY);
+	//options.c_iflag &= ~(IXON | IXOFF | IXANY);
 	
 	/*Output options*/
-	options.c_oflag &= ~OPOST;/* Raw Output*/
+	//options.c_oflag &= ~OPOST;/* Raw Output*/
 	/*Control timeout and cahracters (test)*/
-	options.c_cc[VMIN] = 2;	
-	options.c_cc[VTIME] = 1;
-	
+	//options.c_cc[VMIN] = 0;	
+	//options.c_cc[VTIME] = 20;
+	tcflush(dev->fd,TCIFLUSH);
 	tcsetattr(dev->fd, TCSANOW, &options);
 	
 	return dev->fd;
 }
+int read_test(NaviGPS *dev){
+	Byte car;
+	read(dev->fd,&car,1);
+	printf("Retour : %c\n",car);
+	return 0;
+	
+	
+	
+}
+int write_test(NaviGPS*dev){
+	Byte car ='a';
+	return write(dev->fd,&car,1);
+	
+}
+
 
 int read_packet_from_gps(NaviGPS *dev){
 	
@@ -94,9 +116,9 @@ int read_packet_from_gps(NaviGPS *dev){
 
 int write_packet_to_gps(NaviGPS *dev, Byte type, Byte *data, Word size){
 
-	int n = setPacket(transmitbuffer,type,data,size);
+	int n = setPacket(&transmitbuffer[0],type,data,size);
 	
-	 n = write(dev->fd,transmitbuffer,n);
+	n = write(dev->fd,&transmitbuffer[0],1);
 	
 	return n;
 

@@ -28,6 +28,8 @@ void free_GPS(NaviGPS * dev);
 /* Serial Function */
 /** \todo implement on WIN32 */
 int write_packet_to_gps(NaviGPS *dev, Byte type, Byte *data, Word size); 
+int write_test(NaviGPS *dev);
+int read_test(NaviGPS*dev);
 /** \todo implement on WIN32 */
 int close_gps_serial_link(NaviGPS *dev);
 /** \todo implement on WIN32 and POSIX*/
