@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "NaviGPSapi.h"
-#include <unistd.h>
 
+#include "NaviGPSapi.h"
 
 #define PRINT_SIZE(x) printf("Size of a "#x": %d\n",sizeof(x))
 #define PRINT_STRING(x) printf(#x":%s\n",x);
@@ -21,14 +20,14 @@ int main()
 	 }
 	 printf("Great connection .... :-)\n");
 	//sleep(1);
-	//int n = write_packet_to_gps(bgt31,PID_SYNC,0,0);
-	//printf("Number of bytes send :%d\n",n);
+	int n = write_packet_to_gps(bgt31,PID_SYNC,0,0);
+	printf("Number of bytes send :%d\n",n);
 	
-	//read_packet_from_gps(bgt31); 
+	read_packet_from_gps(bgt31); 
 	
 	
 	
-	read_test(bgt31);
+	
 	
 	
 	close_gps_serial_link(bgt31);
