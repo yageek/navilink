@@ -2,8 +2,10 @@
 #include<string.h>
 
 /*Unix headers part*/
+
 #include <termios.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/signal.h>
@@ -19,15 +21,6 @@ static Byte recievingbuffer[MAX_PACKET_SIZE];
 
 static struct termios options;
 
-struct sigaction sigaction_IOSignal;
-
-void handle_IO(int signum,siginfo_t *info, void *ptr){
-	printf("Signal causing handling:%d\n",signum);
-	printf("Signal originates from process %lu\n",(unsigned long)info->si_pid);
-	
-	
-	
-}
 
 int init_gps_serial_link(NaviGPS * dev){
 
@@ -38,8 +31,9 @@ int init_gps_serial_link(NaviGPS * dev){
 		perror("Unable to open the serial file");
 		return -1;
 	}
-      
-       
+    
+     fcntl(dev->fd, F_SETSIG, 0);
+     
 	
 	
 	//fcntl(dev->fd,F_SETFL,0); /* Change configuration to block until a chracters is on the line */
@@ -47,7 +41,7 @@ int init_gps_serial_link(NaviGPS * dev){
 	tcgetattr(dev->fd,&options); /*Get the current options of the current file */
 	
 	/*Baudrate option*/
-	//cfsetispeed(&options, B115200);
+	cfsetispeed(&options, B115200);
 	cfsetospeed(&options, B115200);
 	
 	/*Control options */
@@ -81,6 +75,8 @@ int init_gps_serial_link(NaviGPS * dev){
 	//options.c_cc[VTIME] = 20;
 	tcflush(dev->fd,TCIFLUSH);
 	tcsetattr(dev->fd, TCSANOW, &options);
+	
+	
 	
 	return dev->fd;
 }
@@ -146,11 +142,3 @@ int close_gps_serial_link(NaviGPS *dev){
 
 }
 
-int setupIOSignal(){
-	
-	sigaction_IOSignal.sa_handler = handle_IO;
-	sigaction_IOSignal.sa_flags = SA_SIGINFO;
-	
-	sigaction(SIGIO,&sigaction_IOSignal,NULL);
-		
-}

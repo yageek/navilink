@@ -6,6 +6,9 @@
 #define NAVIGPSAPI_H_INCLUDED
 
 #include "packetapi.h"
+#include "ipc_linux.h"
+#define MAX_DEVICES 5
+
 
 typedef struct NaviGPS NaviGPS;
 /** \struct NaviGPS
@@ -20,6 +23,8 @@ struct NaviGPS{
 	T_TRACKPOINT *tracks;/**< List of routes in the device (seems to be not used) */
 };
 
+void NaviAPI_Init();
+void NaviAPI_Close();
 NaviGPS* get_new_GPS(const char* dev);
 void display_gps_info(NaviGPS *dev);
 void queryWaypoints(NaviGPS *dev,DoubleWord first, Word size );
