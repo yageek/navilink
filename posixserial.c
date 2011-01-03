@@ -60,26 +60,11 @@ int init_gps_serial_link(NaviGPS * dev){
     options.c_oflag&=(~OPOST);
     options.c_cc[VTIME] = 0;
     options.c_cc[VMIN] = 1;
-	
-	/*Local options */
-	//options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
-	
-	/*Hardware flow control off*/
-	//options.c_cflag &= ~CRTSCTS;
-
-	/*software Flow control ON*/
-	//options.c_iflag |= (IXON | IXOFF | IXANY);
-	//options.c_iflag &= ~(IXON | IXOFF | IXANY);
-	
-	/*Output options*/
-	//options.c_oflag &= ~OPOST;/* Raw Output*/
-	/*Control timeout and cahracters (test)*/
-	//options.c_cc[VMIN] = 0;	
-	//options.c_cc[VTIME] = 20;
+    
 	tcflush(dev->fd,TCIFLUSH);
 	tcsetattr(dev->fd, TCSANOW, &options);
 	
-	
+	initIPC();
 	
 	return dev->fd;
 }
@@ -120,13 +105,7 @@ int read_packet_from_gps(NaviGPS *dev){
 	int n = read(dev->fd,recievingbuffer,1);
 	printf("Number of bytes getted : %d\n",n);
 	for (n=0; n <9;n++)  printf("%#x ", recievingbuffer[n]);
-	
-	
-	
-	
-	
-
-
+			
 }
 
 int write_packet_to_gps(NaviGPS *dev, Byte type, Byte *data, Word size){

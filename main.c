@@ -19,8 +19,6 @@ int main()
 {
 	
 	
-	initIPC();
-	
 	bgt31 = get_new_GPS("/dev/ttyUSB0");
 		if(bgt31 == NULL){
 		printf("Not possible to initialize\n");

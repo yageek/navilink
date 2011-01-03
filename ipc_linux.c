@@ -2,6 +2,7 @@
 #include "NaviGPSapi.h"
 extern NaviGPS *bgt31;
 extern Byte recievingbuffer[MAX_PACKET_SIZE];
+
 struct sigaction sigaction_IOSignal;
 struct sigaction sigaction_INTSignal;
 
@@ -12,7 +13,7 @@ void initIPC(){
 	
 	sigaction_IOSignal.sa_sigaction = handle_IO;
 	sigaction_IOSignal.sa_flags = SA_SIGINFO;
-	
+	//sigaction_IOSignal.sa_mask = SA_NODEFER;
 	
 	sigaction(SIGINT,&sigaction_INTSignal,NULL);	
 	sigaction(SIGIO,&sigaction_IOSignal,NULL);	
@@ -20,12 +21,8 @@ void initIPC(){
 }
 
 void handle_IO(int signum,siginfo_t *info, void *ptr){
-	printf("Signal : IO\n");
-	printf("Received signal %d\n", signum);
-    printf("Signal originates from process %lu\n",(unsigned long)info->si_pid);
-    Byte car;
-	read(bgt31->fd,&car,1);
-	printf("Retour : %c\n",car);
+	read(bgt31->fd,&recievingbuffer[0],5);
+	printf("%c",recievingbuffer[0]);
 
 	
 }
