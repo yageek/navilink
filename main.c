@@ -14,14 +14,14 @@
 Byte packet[MAX_PACKET_SIZE] = {0};
 Byte cpause;
 
-
+NaviGPS *bgt31 = NULL;
 int main()
 {
 	
 	
-	NaviAPI_Init();
+	initIPC();
 	
-	NaviGPS *bgt31 = get_new_GPS("/dev/ttyUSB0");
+	bgt31 = get_new_GPS("/dev/ttyUSB0");
 		if(bgt31 == NULL){
 		printf("Not possible to initialize\n");
 		return -1;

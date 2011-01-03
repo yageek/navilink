@@ -16,8 +16,8 @@
 #define CLR_RX_BUFFER() memset(recievingbuffer,0,MAX_PACKET_SIZE)
 #define CLR_TX_BUFFER() memset(transmitbuffer,0,MAX_PACKET_SIZE)
 
-static Byte transmitbuffer[MAX_PACKET_SIZE];
-static Byte recievingbuffer[MAX_PACKET_SIZE];
+Byte transmitbuffer[MAX_PACKET_SIZE];
+Byte recievingbuffer[MAX_PACKET_SIZE];
 
 static struct termios options;
 
@@ -32,8 +32,11 @@ int init_gps_serial_link(NaviGPS * dev){
 		return -1;
 	}
     
-     fcntl(dev->fd, F_SETSIG, 0);
-     
+       /* allow the process to receive SIGIO */
+        fcntl(dev->fd, F_SETOWN, getpid());
+        /* Make the file descriptor asynchronous (the manual page says only 
+           O_APPEND and O_NONBLOCK, will work with F_SETFL...) */
+        fcntl(dev->fd, F_SETFL, FASYNC);
 	
 	
 	//fcntl(dev->fd,F_SETFL,0); /* Change configuration to block until a chracters is on the line */

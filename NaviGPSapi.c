@@ -1,30 +1,10 @@
 #include "NaviGPSapi.h"
 
-NaviGPS *devices[MAX_DEVICES];
-int devicesCounter = 5;
 
-void NaviAPI_Init(){
-	
-	initIPC();
-	
-}
-
-void NaviAPI_Close(){
-	int i;
-	for (i=0;i <= (MAX_DEVICES - devicesCounter - 1) && (i >=0) ;i++){
-		close_gps_serial_link(devices[i]);
-		free_GPS(devices[0]);
-		
-	}
-	devicesCounter = 0;
-	
-}
 
 
 NaviGPS *get_new_GPS(const char* dev){
 	
-	if(devicesCounter < 1) return NULL;
-	else {
 	
 	
 		NaviGPS * ptr = malloc(sizeof(NaviGPS));
@@ -36,9 +16,7 @@ NaviGPS *get_new_GPS(const char* dev){
 	
 		strcpy(ptr->deviceName,dev);
 		
-		devicesCounter--;
 		return ptr;
-	}
 	
 
 }

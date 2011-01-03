@@ -7,7 +7,7 @@
 
 #include "packetapi.h"
 #include "ipc_linux.h"
-#define MAX_DEVICES 5
+
 
 
 typedef struct NaviGPS NaviGPS;
