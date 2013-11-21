@@ -17,7 +17,18 @@
 #define __AdaptNible(val) ((Byte)( \
 		((Byte)(val) & (Byte)(0x0F)) | \
 		((Byte)(val) & (Byte)(0xF0)))) 
-		
+
+typedef enum {
+    YGBigEndian,
+    YGLittleEndian,
+    YGUnknownEndian
+} YGEndianness;
+
+YGEndianness localEndianness();
+
+#define YGHostToLEWord(WORD) localEndianness() == YGLittleEndian ? WORD : __AdaptWord(WORD);
+
+
 void returnbuffer(Byte  * buffer,int size);
 void __AdaptT_INFORMATION(T_INFORMATION *x);
 void __AdaptT_POSITION(T_POSITION *x);

@@ -8,7 +8,7 @@ NaviGPS *get_new_GPS(const char* dev){
 	
 	
 		NaviGPS * ptr = malloc(sizeof(NaviGPS));
-	
+    
 		ptr->informations = malloc(sizeof(T_INFORMATION));
 		ptr->waypoints = malloc(sizeof(T_WAYPOINT));
 		ptr->routes = malloc(sizeof(T_ROUTE));

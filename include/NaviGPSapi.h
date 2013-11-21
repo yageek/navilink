@@ -4,11 +4,10 @@
 
 #ifndef NAVIGPSAPI_H_INCLUDED
 #define NAVIGPSAPI_H_INCLUDED
+#include<pthread.h>
 
 #include "packetapi.h"
 #include "ipc_linux.h"
-
-
 
 typedef struct NaviGPS NaviGPS;
 /** \struct NaviGPS

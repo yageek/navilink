@@ -22,62 +22,32 @@ Word getChecksum(const Byte *payloaddata, Word size){
     return checksum ;
 }
 
-int setPacket(Byte *packet , Byte type, Byte  *data,Word size){
-    int i;
-	Word packetLength = size +1;
-		
-	if( (size >0) && (data == NULL)) {
-		
-		SetError("Data buffer is NULL and size is greater than 0 ");
-		return -1;
-		}
-	
-	/* Start of data */
-	#ifdef BIG_ENDIAN
-	*((Word *)packet) = __AdaptWord((PACK_START1) | (PACK_START2 << 8));
-	#else
-	*((Word *)packet) = (PACK_START1) | (PACK_START2 << 8);
-	#endif
-	
-	/* Packet Length */
-	#ifdef BIG_ENDIAN
-	*((Word *)(packet+=2)) = __AdaptWord(packetLength);
-	#else
-	*((Word *)(packet+=2)) = packetLength;
-	#endif
-	
-	/*Data and Type*/
-	payload[0] = type;
-	Byte *ptr = payload + 1;
-	for(i=0 ;i < size;i++)  *ptr++ = *data++;
-	
-	packet+=2;
-	ptr=payload;
-	for(i=0 ;i < packetLength;i++)  *packet++ = *ptr++;
-		
-	/*Checksum */
-	#ifdef BIG_ENDIAN
-	*((Word *)packet) = __AdaptWord(getChecksum(payload,packetLength));
-	#else
-	*((Word *)packet) = getChecksum(payload,packetLength);
-	#endif
-	
-	/*End word*/
-	#ifdef BIG_ENDIAN
-	*((Word *)(packet+=2)) = __AdaptWord((PACK_END1) | (PACK_END2 << 8));
-	#else
-	*((Word *)(packet+=2)) =(PACK_END1) | (PACK_END2 << 8);
-	#endif
-	
-	return packetLength + 8;
-	
+Byte * YGCreatePacket(Byte type, Byte  *payload,Word packetLength)
+{
+    Byte * buffer = malloc((8+packetLength+1) * sizeof(Byte));
+    
+    *buffer = PACK_START1;
+    *(buffer+1) = PACK_START2;
+    
+    *((Word*)(buffer+2)) = YGHostToLEWord(packetLength+1);
+    
+    *(buffer+4) = type;
+    
+    memcpy(buffer+5, payload, packetLength);
+    
+    *((Word*)(buffer+5+packetLength)) = YGHostToLEWord(getChecksum(buffer+4, packetLength+1));
+
+    *(buffer+7+packetLength) = PACK_END1;
+     *(buffer+8+packetLength) = PACK_END2;
+    
+    return buffer;
 }
 
 int readPacket(Byte *packet, Word* Lengthofpacket, Byte *databuffer){
 
 	Word i,checksum = 0,length;
 	Byte *ptr = &payload[0];
-	if((packet == NULL)){
+	if(packet == NULL){
 		SetError("The provided packet pointer is NULL. ");
 		return -1;
 	}

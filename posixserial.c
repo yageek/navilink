@@ -11,6 +11,7 @@
 #include <sys/signal.h>
 #include <sys/types.h>
 
+
 #include "NaviGPSapi.h"
 
 #define CLR_RX_BUFFER() memset(recievingbuffer,0,MAX_PACKET_SIZE)
@@ -83,44 +84,9 @@ int write_test(NaviGPS*dev){
 	
 }
 
-
-int read_packet_from_gps(NaviGPS *dev){
-	
-	CLR_RX_BUFFER();
-	Byte *ptr = recievingbuffer;
-	int nbytes;
-	Word length;
-	/*
-	while( nbytes = read(dev->fd,recievingbuffer,recievingbuffer + sizeof(recievingbuffer) - ptr)){
-		if((ptr[-1] == PACK_START2) && ((ptr[-2] == PACK_START1))) break;
-		ptr+=nbytes;
-	}
-	ptr = recievingbuffer;
-	while( nbytes = read(dev->fd,recievingbuffer,recievingbuffer + sizeof(recievingbuffer) - ptr)){
-		if((ptr[-1] == PACK_END2) && ((ptr[-2] == PACK_END1))) break;
-		ptr+=nbytes;
-		
-	}
-	*/
-	int n = read(dev->fd,recievingbuffer,1);
-	printf("Number of bytes getted : %d\n",n);
-	for (n=0; n <9;n++)  printf("%#x ", recievingbuffer[n]);
-			
-}
-
-int write_packet_to_gps(NaviGPS *dev, Byte type, Byte *data, Word size){
-
-	int n = setPacket(&transmitbuffer[0],type,data,size);
-	
-	n = write(dev->fd,&transmitbuffer[0],1);
-	
-	return n;
-
-}
-
 int close_gps_serial_link(NaviGPS *dev){
 
-	close(dev->fd);
+	return close(dev->fd);
 
 }
 

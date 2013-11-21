@@ -19,7 +19,7 @@ int main()
 {
 	
 	
-	bgt31 = get_new_GPS("/dev/ttyUSB0");
+	bgt31 = get_new_GPS("/dev/tty.usbserial");
 		if(bgt31 == NULL){
 		printf("Not possible to initialize\n");
 		return -1;
@@ -32,9 +32,10 @@ int main()
 		 return -1;
 	 }
 	 printf("Great connection .... :-)\n");
-	//sleep(1);
-	//int n = write_packet_to_gps(bgt31,PID_SYNC,0,0);
-	//printf("Number of bytes send :%d\n",n);
+	sleep(1);
+    
+	Byte * data = YGCreatePacket(PID_SYNC, 0, 0);
+	
 	
 	//read_packet_from_gps(bgt31); 
 	
