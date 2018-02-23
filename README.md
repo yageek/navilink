@@ -53,4 +53,4 @@ int main(int argc, char** argv)
   return 0;
 }
 ```
-This program is licensed under GPLv2
+
