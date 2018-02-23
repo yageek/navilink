@@ -1,26 +1,9 @@
-cmake_minimum_required(VERSION 2.8)
-PROJECT(navilink)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+project(navilink VERSION 0.1 LANGUAGES C)
 
-SET(CMAKE_BUILD_TYPE Debug)
+# Find packages path.
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
-SET(navilink_src main.c packetapi.c NaviGPSapi.c endianness.c)
-include_directories(include)
-
-
-OPTION(BIG_ENDIAN OFF)
-if(BIG_ENDIAN)
-	add_definitions(-DBIG_ENDIAN)
-endif(BIG_ENDIAN)
-
-if(UNIX)
-	MESSAGE(STATUS " == Unix plateform ==")
-	SET(serial_api posixserial.c ipc_linux.c)
-	add_definitions(-D_GNU_SOURCE)
-endif(UNIX)
-if(WIN32)
-	MESSAGE(STATUS " == Win32 plateform ==")
-	SET(serial_api win32serial.c)
-endif(WIN32)
-
-
-ADD_EXECUTABLE(navilink ${navilink_src} ${serial_api})
+find_package(LibSerialport REQUIRED)
+add_subdirectory(lib)
+add_subdirectory(cli)
