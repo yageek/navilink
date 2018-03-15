@@ -2,6 +2,9 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 project(navilink VERSION 0.1 LANGUAGES C)
 
+# Unit testing.
+option(UNIT_TEST "UNIT_TEST" OFF)
+
 if(UNIT_TEST)
 	add_subdirectory(tests)
 endif(UNIT_TEST)
@@ -22,13 +25,13 @@ set(HEADERS
             include/navilink_gpx.h)
 
 add_library(navilink STATIC ${SOURCES} ${HEADERS})
+set_property(TARGET navilink PROPERTY C_STANDARD 99)
 
-target_include_directories(navilink
-    PUBLIC include
-    PRIVATE src
+target_include_directories(navilink PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include/navilink>
 )
 
-include_directories(navilink ${LIBSERIALPORT_INCLUDE_DIRS})
+include_directories(navilink ${LIBSERIALPORT_INCLUDE_DIR})
 target_link_libraries(navilink ${LIBSERIALPORT_LIBRARY})
 install(TARGETS navilink DESTINATION lib)
 install(FILES ${HEADERS} DESTINATION include/navilink)

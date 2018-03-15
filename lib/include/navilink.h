@@ -3,6 +3,7 @@
 
 #include "navilink_device.h"
 #include "navilink_endianness.h"
+#include "navilink_errors.h"
 #include "navilink_gpx.h"
 #include "navilink_packet.h"
 #include "navilink_protocol.h"

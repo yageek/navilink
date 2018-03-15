@@ -5,7 +5,11 @@ project(navilink VERSION 0.1 LANGUAGES C)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
 option(UNIT_TEST "UNIT_TEST" OFF)
+option(CLI_TOOL "CLI_TOOL" ON)
 
 find_package(LibSerialport REQUIRED)
 add_subdirectory(lib)
-add_subdirectory(cli)
+
+if(CLI_TOOL)
+  add_subdirectory(cli)
+endif(CLI_TOOL)

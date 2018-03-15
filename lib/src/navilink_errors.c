@@ -1,34 +1,28 @@
 #include "navilink_errors.h"
 #include <string.h>
 
-#define ERROR_MESS_LENGTH 256
-
-static char navilinkError[ERROR_MESS_LENGTH] = "";
-static int navilinkErrorCode = 0;
-
-int navilink_get_error_code()
-{
-  return navilinkErrorCode;
-}
-
-const char* navilink_get_error_description()
-{
-  return navilinkError;
-}
-
 const char* description_from_error(int error)
 {
 
   switch (error) {
-  case NAVILINK_ERROR_PAYLOAD_SIZE:
-    return "The provided payload of too big";
+  case NAVILINK_ERROR_PAYLOAD:
+    return "The provided payload is invalid";
   default:
     return "Unknown error code";
   }
 }
 
-void set_current_error(int code)
+int navilink_get_error_code(NavilinkDevice* device)
 {
-  navilinkErrorCode = code;
-  strcpy(navilinkError, description_from_error(code));
+  return device->last_error_code;
+}
+
+const char* navilink_get_error_description(NavilinkDevice* device)
+{
+  return description_from_error(device->last_error_code);
+}
+
+void set_current_error(NavilinkDevice* device, int code)
+{
+  device->last_error_code = code;
 }

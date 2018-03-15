@@ -2,6 +2,7 @@
 #define __NAVILINK_DEVICE
 #include "navilink_packet.h"
 #include "navilink_protocol.h"
+
 #include <libserialport.h>
 #include <stdlib.h>
 /**
@@ -24,6 +25,7 @@ typedef struct {
   NavilinkInformation informations;
   int firmware_version;
   NavilinkPacket response_packet;
+  int last_error_code;
 } NavilinkDevice;
 
 /**

@@ -62,7 +62,7 @@ int navilink_open_sp_port(struct sp_port* port, NavilinkDevice* device)
 {
   enum sp_return result = sp_open(port, SP_MODE_READ_WRITE);
   if (result != SP_OK) {
-    set_current_error(NAVILINK_ERROR_OPEN_DEVICE_ERROR);
+    set_current_error(device, NAVILINK_ERROR_OPEN_DEVICE_ERROR);
     goto error_cleanup_port;
   }
 
@@ -89,7 +89,7 @@ int navilink_open_sp_port(struct sp_port* port, NavilinkDevice* device)
   //Wait for the port to be ready
   result = sp_wait(event_set, 5000);
   if (result != SP_OK) {
-    set_current_error(NAVILINK_ERROR_OPEN_DEVICE_ERROR);
+    set_current_error(device, NAVILINK_ERROR_OPEN_DEVICE_ERROR);
     goto error_clean_event_set;
   }
 
