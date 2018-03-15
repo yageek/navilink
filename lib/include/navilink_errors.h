@@ -1,8 +1,8 @@
 #ifndef __NAVILINK_ERRORS
 #define __NAVILINK_ERRORS
 
-static const int NAVILINK_ERROR_PAYLOAD_SIZE = 10;
-static const int NAVILINK_ERROR_OPEN_DEVICE_ERROR = 20;
+#define NAVILINK_ERROR_PAYLOAD_SIZE 10
+#define NAVILINK_ERROR_OPEN_DEVICE_ERROR 20
 
 /**
  * @brief Get the description about the error
