@@ -2,6 +2,7 @@
 #define __NAVILINK_DEVICE
 #include "navilink_packet.h"
 #include "navilink_protocol.h"
+
 #include <libserialport.h>
 #include <stdlib.h>
 /**
