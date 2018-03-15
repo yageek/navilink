@@ -2,9 +2,6 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 project(navilink VERSION 0.1 LANGUAGES C)
 
-# Unit testing.
-option(UNIT_TEST "UNIT_TEST" ON)
-
 if(UNIT_TEST)
 	add_subdirectory(tests)
 endif(UNIT_TEST)
