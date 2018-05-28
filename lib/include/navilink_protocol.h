@@ -110,7 +110,7 @@ struct NavilinkInformation {
   unsigned short protocolVersion;
   // char unknown[16]; /* 16 bytes with unknown info */
   char username[16]; /**< Username  */
-} __attribute__((packed));
+};
 
 /** \struct NavilinkPosition
  *	\brief Describe the position of one waypoint.
@@ -119,7 +119,7 @@ struct NavilinkPosition {
   int latitude; /**< +-900000000,in 1/10000000 degree */
   int longitude; /**< +-1800000000,in 1/10000000 degree*/
   unsigned short altitude; /**< range 0..65535,in feet*/
-} __attribute__((packed));
+};
 
 /** \struct NavilinkDateTime
  *	\brief Describe the timestamp of one waypoint.
@@ -131,7 +131,7 @@ struct NavilinkDateTime {
   unsigned char hour; /**< Range 0..23 */
   unsigned char minute; /**< Range 0..59 */
   unsigned char second; /**< Range 0..59 */
-} __attribute__((packed));
+};
 
 /** \struct NavilinkWaypoint
  *	\brief Describe the waypoint element contained in the data logger.
@@ -147,7 +147,7 @@ struct NavilinkWaypoint {
   unsigned char reserved_2;
   unsigned char tag1; /**< reserved, default 0x00 */
   unsigned char tag2; /**< reserved, default 0x7e */
-} __attribute__((packed));
+};
 
 /** \struct NavilinkSubroute
  *	\brief To determine
@@ -157,7 +157,7 @@ struct NavilinkSubroute {
   unsigned short waypointID[14]; /**< Range 0..999,0xffff:NULL waypoint ID */
   unsigned char tag1; /**< 0x7f for last subroute*/
   unsigned char tag2; /**< reserved , default 0x77*/
-} __attribute__((packed));
+};
 
 /** \struct NavilinkRoute
  *	\brief To determine
@@ -174,7 +174,7 @@ struct NavilinkRoute {
   unsigned char flag; /**< reserved, default 0x7b */
   unsigned char mark; /**< reserved, default 0x77 */
   NavilinkSubroute subRoutes[9];
-} __attribute__((packed));
+};
 
 /** \struct NavilinkTrackpoint
  *	\brief Seems to be not used with the BGT31
@@ -190,6 +190,6 @@ struct NavilinkTrackpoint {
   unsigned char halfspeed; /**< in KMH, actual speed=halfspeed*2 */
   unsigned char tag1; /**< reserved, default 0x5a */
   unsigned char tag2; /**< reserved, default 0x7e */
-} __attribute__((packed));
+};
 
 #endif // NAVILINK_PROTOCOL_H_INCLUDED
