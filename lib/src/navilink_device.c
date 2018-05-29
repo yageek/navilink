@@ -6,7 +6,7 @@
 #include "navilink_packet.h"
 #include <assert.h>
 
-#define __DEBUG_CMD 0
+#define __DEBUG_CMD 1
 /// INTERNAL
 void DumpHex(const void* data, size_t size)
 {

@@ -38,6 +38,10 @@ void DumpHex(const void* data, size_t size)
   }
 }
 
+void DumpPacketContent(NavilinkPacket *packet) {
+  DumpHex(packet->payload, packet->payload_length);
+}
+
 int init_suite_success() { return 0; }
 int init_suite_failure() { return -1; }
 int clean_suite_success() { return 0; }
@@ -93,6 +97,45 @@ void test_packet_creation()
   assert_packet_content(&expected_waypoint_mul[0], &buffer[0], sizeof(expected_waypoint_mul));
 }
 
+void test_infos_decode() {
+
+  uint8_t data[] = { 0xA0, 0xA2, 0x21, 0x00, 0x03, 0x46, 0x00, \
+                     0x00, 0x01, 0x00, 0x00, 0x12, 0x40, 0x2F, 0x96, 0xA6, \
+                     0x31, 0x00, 0x15, 0x00, 0x59, 0x61, 0x47, 0x65, 0x65, \
+                     0x6B, 0x00, 0x40, 0x0C, 0x08, 0x01, 0x60, 0x88, 0xD8, \
+                     0x00, 0x00, 0x98, 0x06, 0xB0, 0xB3 };
+
+  NavilinkPacket packet;
+  if (navilink_read_packet(&packet, data) < 0) CU_FAIL_FATAL("Error read packet");
+  DumpPacketContent(&packet);
+
+  NavilinkInformation infos;
+  if (navilink_read_informations(&infos, packet.payload, packet.payload_length) < 0) CU_FAIL_FATAL("Error read infos");
+  CU_ASSERT_EQUAL(infos.totalWaypoint, 0x46);
+
+}
+
+void test_waypoint_decode() {
+
+  uint8_t data[] = { 0xA0, 0xA2, 0x21, 0x00, 0x03, 0x00, 0x40, \
+  0x00, 0x00, 0x30, 0x30, 0x31, 0x00, 0x20, 0x20, 0x00, 0x00, \
+  0xDF, 0x4F, 0xDB, 0x16, 0x52, 0xDE, 0xB6, 0xFF, 0x00, 0x00, \
+  0x0B, 0x05, 0x01, 0x06, 0x17, 0x10, 0x00, 0x00, 0x00, 0x7E, \
+  0xD4, 0x06, 0xB0, 0xB3};
+
+  NavilinkPacket packet;
+  if (navilink_read_packet(&packet, data) < 0) CU_FAIL_FATAL("Error read packet");
+
+  NavilinkWaypoint wpt;
+  if (navilink_read_waypoint(&wpt, packet.payload, packet.payload_length) < 0) CU_FAIL_FATAL("Error read waypoint");
+  // 00 40 00 00 30 30 31 00  20 20 00 00 DF 4F DB 16
+  // 52 DE B6 FF 00 00 0B 05  01 06 17 10 00 00 00 7E
+  CU_ASSERT_EQUAL(wpt.recordType, 0x4000);
+  CU_ASSERT_EQUAL(wpt.waypointID, 0x00);
+  CU_ASSERT_STRING_EQUAL(wpt.waypointName, "0012");
+
+}
+
 int main(int argc, char** argv)
 {
 
@@ -110,7 +153,11 @@ int main(int argc, char** argv)
   }
 
   /* add the tests to the suite testProjectionsecant*/
-  if (NULL == CU_add_test(pSuite, "Test Packet CRC", test_packet_crc) || NULL == CU_add_test(pSuite, "Test Packet Creation", test_packet_creation)) {
+  if (NULL == CU_add_test(pSuite, "Test Packet CRC", test_packet_crc) || 
+      NULL == CU_add_test(pSuite, "Test Packet Creation", test_packet_creation) || 
+      NULL == CU_add_test(pSuite, "Test Read Informations", test_infos_decode) || 
+      NULL == CU_add_test(pSuite, "Test waypoint decode", test_waypoint_decode)
+      ) {
     CU_cleanup_registry();
     return CU_get_error();
   }
