@@ -96,5 +96,4 @@ int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int quer
 
 int navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id);
 
-int navilink_query_route(NavilinkDevice* device, int route_index, NavilinkRoute* waypoint);
 #endif
