@@ -22,7 +22,6 @@ int navilink_read_informations(NavilinkInformation *information, uint8_t *buffer
     _read16(&information->totalWaypoint, &buffer[0]);
     memcpy(&information->totalRoute, &buffer[2], 1);
     memcpy(&information->totalTrack, &buffer[3], 1);
-
     _read32(&information->startAdrOfTrackBuffer, &buffer[4]);
     _read32(&information->deviceSerialNum, &buffer[8]);
     _read16(&information->numOfTrackpoints, &buffer[12]);
@@ -32,7 +31,7 @@ int navilink_read_informations(NavilinkInformation *information, uint8_t *buffer
     return 0;
 }
 
-int navilink_read_date_time(NavilinkDateTime *datetime, uint8_t *buffer, size_t buffer_len) {
+int navilink_read_datetime(NavilinkDateTime *datetime, uint8_t *buffer, size_t buffer_len) {
 
     if (buffer_len < NAVILINK_POSITION_PAYLOAD_LENGTH ) {
         return -1;
@@ -53,9 +52,9 @@ int navilink_read_position(NavilinkPosition *position, uint8_t *buffer, size_t b
         return -1;
     }
 
-    memcpy(&position->latitude, &buffer[0], 4);
-    memcpy(&position->longitude, &buffer[1], 4);
-    memcpy(&position->altitude, &buffer[2], 2);
+    _read32((uint32_t*) &position->latitude, &buffer[0]);
+    _read32((uint32_t*) &position->longitude, &buffer[4]);
+    _read16(&position->altitude, &buffer[8]);
 
     return 0;
 }
@@ -66,8 +65,8 @@ int navilink_read_waypoint(NavilinkWaypoint *waypoint, uint8_t *buffer, size_t b
         return -1;
     }
 
-    memcpy(&waypoint->recordType, &buffer[0], 2);
-    memcpy(&waypoint->waypointID, &buffer[2], 2);
+    _read16(&waypoint->recordType, &buffer[0]);
+    _read16(&waypoint->waypointID, &buffer[2]);
     memcpy(&waypoint->waypointName, &buffer[4], 7);
     // Gap for reserved
 
@@ -76,7 +75,7 @@ int navilink_read_waypoint(NavilinkWaypoint *waypoint, uint8_t *buffer, size_t b
         return result;
     }
 
-    result = navilink_read_date_time(&waypoint->datetime, &buffer[21], buffer_len - 21);
+    result = navilink_read_datetime(&waypoint->datetime, &buffer[21], buffer_len - 21);
     if ( result < 0) {
         return result;
     }

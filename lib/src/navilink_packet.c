@@ -30,7 +30,7 @@ int navilink_create_packet(uint8_t* dst, uint8_t type, const uint8_t* payload, u
 
   // If packet is too big, skip and fail.
   if (packet_length > NAVILINK_MAX_PAYLOAD_SIZE) {
-    return -1;
+    return NAVILINK_ERROR_PAYLOAD;
   }
 
   // Copy start bytes

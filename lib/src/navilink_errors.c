@@ -1,9 +1,10 @@
 #include "navilink_errors.h"
 #include <string.h>
 
+static char message[256];
 const char* description_from_error(int error)
 {
-
+ 
   switch (error) {
   case NAVILINK_ERROR_PAYLOAD:
     return "The provided payload is invalid";
@@ -13,8 +14,11 @@ const char* description_from_error(int error)
     return "Then end byte is invalid";
   case NAVILINK_ERROR_CHECKSUM:
     return "The checksum is invalid";
+  case NAVILINK_ERROR_OPEN_DEVICE_ERROR:
+    return  "Impossible to create a connection to the device";
   default:
-    return "Unknown error code";
+    sprintf(message, "Unknown error code: %i", error);
+    return message;
   }
 }
 

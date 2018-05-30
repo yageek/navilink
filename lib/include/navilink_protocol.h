@@ -202,7 +202,7 @@ struct NavilinkTrackpoint {
 
 
 int navilink_read_informations(NavilinkInformation *information, uint8_t *buffer, size_t buffer_len);
-int navilink_read_date_time(NavilinkDateTime *datetime, uint8_t *buffer, size_t buffer_len);
+int navilink_read_datetime(NavilinkDateTime *datetime, uint8_t *buffer, size_t buffer_len);
 int navilink_read_position(NavilinkPosition *position, uint8_t *buffer, size_t buffer_len);
 int navilink_read_waypoint(NavilinkWaypoint *waypoint, uint8_t *buffer, size_t buffer_len);
 #endif // NAVILINK_PROTOCOL_H_INCLUDED
