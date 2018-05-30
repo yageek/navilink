@@ -30,6 +30,5 @@ typedef struct {
 } NavilinkPacket;
 
 int navilink_create_packet(uint8_t* dst, uint8_t type, const uint8_t* payload, uint16_t payload_length);
-
 int navilink_read_packet(NavilinkPacket* packet, const uint8_t* src);
 #endif // NAVILINK_API_H_INCLUDED

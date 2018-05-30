@@ -12,6 +12,7 @@ endif(UNIT_TEST)
 
 set(SOURCES 
             src/navilink_packet.c
+            src/navilink_protocol.c
             src/navilink_errors.c
             src/navilink_device.c
             src/navilink_gpx.c)

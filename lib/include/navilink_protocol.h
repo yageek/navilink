@@ -8,6 +8,9 @@
 #ifndef NAVILINK_PROTOCOL_H_INCLUDED
 #define NAVILINK_PROTOCOL_H_INCLUDED
 
+
+#include <stdint.h>
+#include <stdlib.h>
 /* Define all the predefined packets
 -> a0 a2 01 00  d6 d6 00 b0  b3
 <- a0 a2 01 00  0c 0c 00 b0  b3
@@ -89,6 +92,11 @@
 #define NAVILINK_MAX_PACKET_SIZE \
   NAVILINK_MAX_PAYLOAD_SIZE + 8 /** Maximal value for the packet*/
 
+#define NAVILINK_INFORMATION_PAYLOAD_LENGTH 32
+#define NAVILINK_WAYPOINT_PAYLOAD_LENGTH 32
+#define NAVILINK_POSITION_PAYLOAD_LENGTH 6
+#define NAVILINK_DATETIME_PAYLOAD_LENGTH 10
+
 typedef struct NavilinkRoute NavilinkRoute;
 typedef struct NavilinkInformation NavilinkInformation;
 typedef struct NavilinkPosition NavilinkPosition;
@@ -101,95 +109,100 @@ typedef struct NavilinkTrackpoint NavilinkTrackpoint;
  *	\brief Describe the informations about the data logger.
  */
 struct NavilinkInformation {
-  unsigned short totalWaypoint; /**< Range 0..1000 */
-  unsigned char totalRoute; /**< Range 0..20 */
-  unsigned char totalTrack; /**< Always 1 for NAViGPS */
-  unsigned int startAdrOfTrackBuffer;
-  unsigned int deviceSerialNum;
-  unsigned short numOfTrackpoints; /**< Range 0..8191*/
-  unsigned short protocolVersion;
+  uint16_t totalWaypoint; /**< Range 0..1000 */
+  uint8_t totalRoute; /**< Range 0..20 */
+  uint8_t totalTrack; /**< Always 1 for NAViGPS */
+  uint32_t startAdrOfTrackBuffer;
+  uint32_t deviceSerialNum;
+  uint16_t numOfTrackpoints; /**< Range 0..8191*/
+  uint16_t protocolVersion;
   // char unknown[16]; /* 16 bytes with unknown info */
-  char username[16]; /**< Username  */
-} __attribute__((packed));
+  uint8_t username[16]; /**< Username  */
+};
 
 /** \struct NavilinkPosition
  *	\brief Describe the position of one waypoint.
  */
 struct NavilinkPosition {
-  int latitude; /**< +-900000000,in 1/10000000 degree */
-  int longitude; /**< +-1800000000,in 1/10000000 degree*/
-  unsigned short altitude; /**< range 0..65535,in feet*/
-} __attribute__((packed));
+  int32_t latitude; /**< +-900000000,in 1/10000000 degree */
+  int32_t longitude; /**< +-1800000000,in 1/10000000 degree*/
+  uint16_t altitude; /**< range 0..65535,in feet*/
+};
 
 /** \struct NavilinkDateTime
  *	\brief Describe the timestamp of one waypoint.
  */
 struct NavilinkDateTime {
-  unsigned char year; /**< actual year= year+2000 */
-  unsigned char month; /**< Range 1..12 */
-  unsigned char day; /**< Range 1..31 */
-  unsigned char hour; /**< Range 0..23 */
-  unsigned char minute; /**< Range 0..59 */
-  unsigned char second; /**< Range 0..59 */
-} __attribute__((packed));
+  uint8_t year; /**< actual year= year+2000 */
+  uint8_t month; /**< Range 1..12 */
+  uint8_t day; /**< Range 1..31 */
+  uint8_t hour; /**< Range 0..23 */
+  uint8_t minute; /**< Range 0..59 */
+  uint8_t second; /**< Range 0..59 */
+};
 
 /** \struct NavilinkWaypoint
  *	\brief Describe the waypoint element contained in the data logger.
  */
 struct NavilinkWaypoint {
-  unsigned short recordType; /**< reserved. default 0x00 0x40*/
-  unsigned short waypointID; /**< Range 0..999*/
-  char waypointName[7]; /**< null-terminated- string,[ 0 .. 9 , , A .. Z ]*/
-  unsigned char reserved;
+  //uint16_t recordType; /**< reserved. default 0x00 0x40*/
+  uint16_t waypointID; /**< Range 0..999*/
+  uint8_t waypointName[7]; /**< null-terminated- string,[ 0 .. 9 , , A .. Z ]*/
+  //uint8_t reserved;
   NavilinkPosition position; /**< position based on WGS84 datum*/
   NavilinkDateTime datetime; /**< time, date in UTC */
-  unsigned char symbolType; /**< Range 0..31*/
-  unsigned char reserved_2;
-  unsigned char tag1; /**< reserved, default 0x00 */
-  unsigned char tag2; /**< reserved, default 0x7e */
-} __attribute__((packed));
+  uint8_t symbolType; /**< Range 0..31*/
+  //uint8_t reserved_2;
+  //uint8_t tag1; /**< reserved, default 0x00 */
+  //uint8_t tag2; /**< reserved, default 0x7e */
+};
 
 /** \struct NavilinkSubroute
  *	\brief To determine
  */
 struct NavilinkSubroute {
-  unsigned short recordType; /**< reserved, default 0x2010 */
-  unsigned short waypointID[14]; /**< Range 0..999,0xffff:NULL waypoint ID */
-  unsigned char tag1; /**< 0x7f for last subroute*/
-  unsigned char tag2; /**< reserved , default 0x77*/
-} __attribute__((packed));
+  uint16_t recordType; /**< reserved, default 0x2010 */
+  uint16_t waypointID[14]; /**< Range 0..999,0xffff:NULL waypoint ID */
+  uint8_t tag1; /**< 0x7f for last subroute*/
+  uint8_t tag2; /**< reserved , default 0x77*/
+};
 
 /** \struct NavilinkRoute
  *	\brief To determine
  */
 struct NavilinkRoute {
-  unsigned short recordType; /**< reserved, default 0x2000*/
-  unsigned char routeID; /**< route ID:0..19,0xffff:null route ID*/
-  unsigned char reserved_1; /**< default 0x20 */
-  char routeName[14]; /**< string,[ 0 .. 9 , A .. Z , ]*/
-  char reserved[2];
-  unsigned int reserved_2;
-  unsigned int reserved_3;
-  unsigned short reserved_4;
-  unsigned char flag; /**< reserved, default 0x7b */
-  unsigned char mark; /**< reserved, default 0x77 */
+  uint16_t recordType; /**< reserved, default 0x2000*/
+  uint8_t routeID; /**< route ID:0..19,0xffff:null route ID*/
+ // uint8_t reserved_1; /**< default 0x20 */
+  uint8_t routeName[14]; /**< string,[ 0 .. 9 , A .. Z , ]*/
+ // uint8_t reserved[2];
+ // uint32_t reserved_2;
+ // uint32_t reserved_3;
+ // uint16_t reserved_4;
+  uint8_t flag; /**< reserved, default 0x7b */
+  uint8_t mark; /**< reserved, default 0x77 */
   NavilinkSubroute subRoutes[9];
-} __attribute__((packed));
+};
 
 /** \struct NavilinkTrackpoint
  *	\brief Seems to be not used with the BGT31
  */
 struct NavilinkTrackpoint {
-  unsigned short serialNum; /**< unique serial number,0..8191*/
-  unsigned short headingOfPoint; /**< Range 0..360 degree*/
-  int x; /**< UTM x in WGS84 */
-  int y; /**< UTM y in WGS84 */
+  uint16_t serialNum; /**< unique serial number,0..8191*/
+  uint16_t headingOfPoint; /**< Range 0..360 degree*/
+  int32_t x; /**< UTM x in WGS84 */
+  int32_t y; /**< UTM y in WGS84 */
   NavilinkPosition position; /**< position in WGS84 datum*/
   NavilinkDateTime datetime; /**< time, date in UTC*/
-  unsigned char zone; /**< UTM zone, 1..60*/
-  unsigned char halfspeed; /**< in KMH, actual speed=halfspeed*2 */
-  unsigned char tag1; /**< reserved, default 0x5a */
-  unsigned char tag2; /**< reserved, default 0x7e */
-} __attribute__((packed));
+  uint8_t zone; /**< UTM zone, 1..60*/
+  uint8_t halfspeed; /**< in KMH, actual speed=halfspeed*2 */
+  uint8_t tag1; /**< reserved, default 0x5a */
+  uint8_t tag2; /**< reserved, default 0x7e */
+};
 
+
+int navilink_read_informations(NavilinkInformation *information, uint8_t *buffer, size_t buffer_len);
+int navilink_read_datetime(NavilinkDateTime *datetime, uint8_t *buffer, size_t buffer_len);
+int navilink_read_position(NavilinkPosition *position, uint8_t *buffer, size_t buffer_len);
+int navilink_read_waypoint(NavilinkWaypoint *waypoint, uint8_t *buffer, size_t buffer_len);
 #endif // NAVILINK_PROTOCOL_H_INCLUDED

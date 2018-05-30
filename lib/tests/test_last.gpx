@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <gpx version="1.0" creator="navilink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<wpt lat="-61.552256" lon="38.347158">
+   <name>001</name>
+   <ele>17112.386400</ele>
+   <sym>Fuel</sym>
+   <time>2000-11-05T01:06:23</time>
+ </wpt><wpt lat="-60.698931" lon="38.350492">
+   <name>005</name>
+   <ele>17152.315200</ele>
+   <sym>3D House</sym>
+   <time>2001-18-05T29:18:35</time>
+ </wpt><wpt lat="-62.755456" lon="38.342458">
+   <name>006</name>
+   <ele>17056.608000</ele>
+   <sym>Turn Left</sym>
+   <time>2000-11-05T01:16:57</time>
+ </wpt><wpt lat="-62.917581" lon="38.341825">
+   <name>007</name>
+   <ele>17048.988000</ele>
+   <sym>Pole</sym>
+   <time>2000-11-05T02:08:09</time>
+ </wpt><wpt lat="-60.451456" lon="38.351458">
+   <name>008</name>
+   <ele>17163.592800</ele>
+   <sym>Mountain</sym>
+   <time>2000-11-05T02:09:04</time>
+ </wpt><wpt lat="-57.750656" lon="38.362008">
+   <name>009</name>
+   <ele>17289.170400</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T02:10:27</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>010</name>
+   <ele>17000.829600</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T02:12:14</time>
+ </wpt><wpt lat="-60.477056" lon="38.351358">
+   <name>011</name>
+   <ele>17162.373600</ele>
+   <sym>Crossroads</sym>
+   <time>2000-11-05T02:13:31</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>015</name>
+   <ele>17000.829600</ele>
+   <sym>Turn Right</sym>
+   <time>2000-11-05T02:15:26</time>
+ </wpt><wpt lat="-62.311731" lon="38.344192">
+   <name>016</name>
+   <ele>17077.029600</ele>
+   <sym>Turn Right</sym>
+   <time>2000-11-05T02:15:53</time>
+ </wpt><wpt lat="-60.997581" lon="38.349325">
+   <name>017</name>
+   <ele>17138.294400</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:42</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>022</name>
+   <ele>17000.829600</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:45</time>
+ </wpt><wpt lat="121.006874" lon="37.382558">
+   <name>023</name>
+   <ele>5627.827200</ele>
+   <sym>Mountain</sym>
+   <time>2000-11-05T04:09:49</time>
+ </wpt><wpt lat="122.444749" lon="37.388175">
+   <name>026</name>
+   <ele>5694.578400</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:05</time>
+ </wpt><wpt lat="121.006874" lon="37.382558">
+   <name>027</name>
+   <ele>5627.827200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:03</time>
+ </wpt><wpt lat="121.301274" lon="37.383708">
+   <name>028</name>
+   <ele>5641.543200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:28</time>
+ </wpt><wpt lat="121.540198" lon="37.384642">
+   <name>030</name>
+   <ele>5652.516000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T05:10:02</time>
+ </wpt><wpt lat="120.947149" lon="37.382325">
+   <name>031</name>
+   <ele>5625.084000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T05:10:14</time>
+ </wpt><wpt lat="118.600474" lon="37.373158">
+   <name>032</name>
+   <ele>5515.660800</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T06:10:30</time>
+ </wpt><wpt lat="-20.441958" lon="48.574075">
+   <name>041</name>
+   <ele>19024.396800</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T27:12:49</time>
+ </wpt><wpt lat="-148.271309" lon="48.074742">
+   <name>043</name>
+   <ele>13079.272800</ele>
+   <sym>Tree</sym>
+   <time>2000-11-06T26:11:22</time>
+ </wpt><wpt lat="-148.523034" lon="48.073758">
+   <name>044</name>
+   <ele>13067.690400</ele>
+   <sym>Tree</sym>
+   <time>2002-11-06T26:11:30</time>
+ </wpt><wpt lat="-124.744909" lon="48.166642">
+   <name>045</name>
+   <ele>14173.504800</ele>
+   <sym>Crossroads</sym>
+   <time>2003-11-06T26:13:43</time>
+ </wpt><wpt lat="-62.096256" lon="38.345033">
+   <name>M001</name>
+   <ele>17087.088000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T01:10:58</time>
+ </wpt><wpt lat="-61.767296" lon="38.346318">
+   <name>M002</name>
+   <ele>17102.632800</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T01:12:08</time>
+ </wpt><wpt lat="-62.400461" lon="38.343845">
+   <name>M003</name>
+   <ele>17073.067200</ele>
+   <sym>Crossroads</sym>
+   <time>2000-11-05T01:13:00</time>
+ </wpt><wpt lat="-62.147456" lon="38.344833">
+   <name>M004</name>
+   <ele>17084.954400</ele>
+   <sym>Road Fork</sym>
+   <time>2000-11-05T01:14:09</time>
+ </wpt><wpt lat="-60.120371" lon="38.352752">
+   <name>M012</name>
+   <ele>17179.137600</ele>
+   <sym>Crossroads</sym>
+   <time>2001-11-05T02:13:40</time>
+ </wpt><wpt lat="-60.302976" lon="38.352038">
+   <name>M013</name>
+   <ele>17170.603200</ele>
+   <sym>Crossroads</sym>
+   <time>2001-11-05T02:13:50</time>
+ </wpt><wpt lat="-60.727936" lon="38.350378">
+   <name>M014</name>
+   <ele>17150.791200</ele>
+   <sym>Road Fork</sym>
+   <time>2000-11-05T02:14:24</time>
+ </wpt><wpt lat="-60.979686" lon="38.349395">
+   <name>M018</name>
+   <ele>17139.208800</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:49</time>
+ </wpt><wpt lat="-61.288141" lon="38.348190">
+   <name>M019</name>
+   <ele>17124.883200</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:54</time>
+ </wpt><wpt lat="-61.247181" lon="38.348350">
+   <name>M020</name>
+   <ele>17126.712000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:01</time>
+ </wpt><wpt lat="-61.248461" lon="38.348345">
+   <name>M021</name>
+   <ele>17126.712000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:01</time>
+ </wpt><wpt lat="123.663718" lon="37.392937">
+   <name>M024</name>
+   <ele>5751.271200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:47</time>
+ </wpt><wpt lat="123.006234" lon="37.390368">
+   <name>M025</name>
+   <ele>5720.791200</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T04:11:28</time>
+ </wpt><wpt lat="122.291994" lon="37.387578">
+   <name>M029</name>
+   <ele>5687.568000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:31</time>
+ </wpt><wpt lat="122.931994" lon="37.390078">
+   <name>M033</name>
+   <ele>5717.133600</ele>
+   <sym>Bird</sym>
+   <time>2000-11-05T06:17:37</time>
+ </wpt><wpt lat="51.131366" lon="48.853658">
+   <name>M034</name>
+   <ele>2378.049600</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:38</time>
+ </wpt><wpt lat="50.884736" lon="48.852695">
+   <name>M035</name>
+   <ele>2366.467200</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:41</time>
+ </wpt><wpt lat="50.586086" lon="48.851528">
+   <name>M036</name>
+   <ele>2352.446400</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:48</time>
+ </wpt><wpt lat="50.730726" lon="48.852093">
+   <name>M037</name>
+   <ele>2359.152000</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:49</time>
+ </wpt><wpt lat="49.303936" lon="48.846520">
+   <name>M038</name>
+   <ele>2293.010400</ele>
+   <sym>Tower</sym>
+   <time>2002-11-05T22:20:04</time>
+ </wpt><wpt lat="49.152051" lon="48.845927">
+   <name>M039</name>
+   <ele>2286.000000</ele>
+   <sym>Tower</sym>
+   <time>2002-11-05T22:20:04</time>
+ </wpt><wpt lat="49.020646" lon="48.845413">
+   <name>M040</name>
+   <ele>2279.599200</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T23:19:31</time>
+ </wpt><wpt lat="49.141402" lon="48.845885">
+   <name>M042</name>
+   <ele>2285.390400</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-06T06:19:16</time>
+ </wpt><wpt lat="80.533888" lon="55.679398">
+   <name>M046</name>
+   <ele>3745.382400</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T07:15:00</time>
+ </wpt><wpt lat="80.531328" lon="55.679388">
+   <name>M047</name>
+   <ele>3745.382400</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T07:15:00</time>
+ </wpt><wpt lat="74.725683" lon="55.656710">
+   <name>M048</name>
+   <ele>3475.329600</ele>
+   <sym>Pole</sym>
+   <time>2000-13-05T10:08:59</time>
+ </wpt><wpt lat="133.738342" lon="52.531785">
+   <name>M049</name>
+   <ele>6219.748800</ele>
+   <sym>Bird</sym>
+   <time>2000-13-05T18:17:33</time>
+ </wpt><wpt lat="133.748147" lon="52.531823">
+   <name>M050</name>
+   <ele>6220.358400</ele>
+   <sym>Bird</sym>
+   <time>2000-13-05T18:17:33</time>
+ </wpt><wpt lat="133.758822" lon="52.531865">
+   <name>M051</name>
+   <ele>6220.663200</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:29</time>
+ </wpt><wpt lat="133.760077" lon="52.531870">
+   <name>M052</name>
+   <ele>6220.968000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:30</time>
+ </wpt><wpt lat="133.751987" lon="52.531838">
+   <name>M053</name>
+   <ele>6220.358400</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:31</time>
+ </wpt><wpt lat="133.731072" lon="52.531757">
+   <name>M054</name>
+   <ele>6219.444000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:32</time>
+ </wpt><wpt lat="133.770752" lon="52.531912">
+   <name>M055</name>
+   <ele>6221.272800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:35</time>
+ </wpt><wpt lat="133.745587" lon="52.531813">
+   <name>M056</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:35</time>
+ </wpt><wpt lat="133.740467" lon="52.531793">
+   <name>M057</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:36</time>
+ </wpt><wpt lat="133.736192" lon="52.531777">
+   <name>M058</name>
+   <ele>6219.748800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.735782" lon="52.531775">
+   <name>M059</name>
+   <ele>6219.748800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.741747" lon="52.531798">
+   <name>M060</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.731942" lon="52.531760">
+   <name>M061</name>
+   <ele>6219.444000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="132.088832" lon="52.525342">
+   <name>M062</name>
+   <ele>6143.244000</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T20:15:42</time>
+ </wpt><wpt lat="130.654387" lon="52.519738">
+   <name>M063</name>
+   <ele>6076.492800</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T20:15:49</time>
+ </wpt><wpt lat="127.137357" lon="52.506000">
+   <name>M064</name>
+   <ele>5912.815200</ele>
+   <sym>Turn Left</sym>
+   <time>2000-13-05T20:16:16</time>
+ </wpt><wpt lat="126.988032" lon="52.505417">
+   <name>M065</name>
+   <ele>5905.804800</ele>
+   <sym>Turn Left</sym>
+   <time>2000-13-05T20:16:18</time>
+ </wpt><wpt lat="-100.529869" lon="48.261232">
+   <name>M066</name>
+   <ele>15299.740800</ele>
+   <sym>Phone</sym>
+   <time>2002-13-07T21:07:29</time>
+ </wpt><wpt lat="-100.125798" lon="48.262810">
+   <name>M067</name>
+   <ele>15318.638400</ele>
+   <sym>Tree</sym>
+   <time>2001-13-07T21:11:52</time>
+ </wpt><wpt lat="-110.329984" lon="46.545228">
+   <name>M068</name>
+   <ele>14843.760000</ele>
+   <sym>Pole</sym>
+   <time>2026-14-08T04:08:50</time>
+ </wpt><wpt lat="-117.633229" lon="46.516700">
+   <name>M069</name>
+   <ele>14504.212800</ele>
+   <sym>Pole</sym>
+   <time>2031-14-08T05:08:27</time>
+ </wpt><wpt lat="-61.552256" lon="38.347158">
+   <name>001</name>
+   <ele>17112.386400</ele>
+   <sym>Fuel</sym>
+   <time>2000-11-05T01:06:23</time>
+ </wpt><wpt lat="-60.698931" lon="38.350492">
+   <name>005</name>
+   <ele>17152.315200</ele>
+   <sym>3D House</sym>
+   <time>2001-18-05T29:18:35</time>
+ </wpt><wpt lat="-62.755456" lon="38.342458">
+   <name>006</name>
+   <ele>17056.608000</ele>
+   <sym>Turn Left</sym>
+   <time>2000-11-05T01:16:57</time>
+ </wpt><wpt lat="-62.917581" lon="38.341825">
+   <name>007</name>
+   <ele>17048.988000</ele>
+   <sym>Pole</sym>
+   <time>2000-11-05T02:08:09</time>
+ </wpt><wpt lat="-60.451456" lon="38.351458">
+   <name>008</name>
+   <ele>17163.592800</ele>
+   <sym>Mountain</sym>
+   <time>2000-11-05T02:09:04</time>
+ </wpt><wpt lat="-57.750656" lon="38.362008">
+   <name>009</name>
+   <ele>17289.170400</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T02:10:27</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>010</name>
+   <ele>17000.829600</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T02:12:14</time>
+ </wpt><wpt lat="-60.477056" lon="38.351358">
+   <name>011</name>
+   <ele>17162.373600</ele>
+   <sym>Crossroads</sym>
+   <time>2000-11-05T02:13:31</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>015</name>
+   <ele>17000.829600</ele>
+   <sym>Turn Right</sym>
+   <time>2000-11-05T02:15:26</time>
+ </wpt><wpt lat="-62.311731" lon="38.344192">
+   <name>016</name>
+   <ele>17077.029600</ele>
+   <sym>Turn Right</sym>
+   <time>2000-11-05T02:15:53</time>
+ </wpt><wpt lat="-60.997581" lon="38.349325">
+   <name>017</name>
+   <ele>17138.294400</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:42</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>022</name>
+   <ele>17000.829600</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:45</time>
+ </wpt><wpt lat="121.006874" lon="37.382558">
+   <name>023</name>
+   <ele>5627.827200</ele>
+   <sym>Mountain</sym>
+   <time>2000-11-05T04:09:49</time>
+ </wpt><wpt lat="122.444749" lon="37.388175">
+   <name>026</name>
+   <ele>5694.578400</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:05</time>
+ </wpt><wpt lat="121.006874" lon="37.382558">
+   <name>027</name>
+   <ele>5627.827200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:03</time>
+ </wpt><wpt lat="121.301274" lon="37.383708">
+   <name>028</name>
+   <ele>5641.543200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:28</time>
+ </wpt><wpt lat="121.540198" lon="37.384642">
+   <name>030</name>
+   <ele>5652.516000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T05:10:02</time>
+ </wpt><wpt lat="120.947149" lon="37.382325">
+   <name>031</name>
+   <ele>5625.084000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T05:10:14</time>
+ </wpt><wpt lat="118.600474" lon="37.373158">
+   <name>032</name>
+   <ele>5515.660800</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T06:10:30</time>
+ </wpt><wpt lat="-20.441958" lon="48.574075">
+   <name>041</name>
+   <ele>19024.396800</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T27:12:49</time>
+ </wpt><wpt lat="-148.271309" lon="48.074742">
+   <name>043</name>
+   <ele>13079.272800</ele>
+   <sym>Tree</sym>
+   <time>2000-11-06T26:11:22</time>
+ </wpt><wpt lat="-148.523034" lon="48.073758">
+   <name>044</name>
+   <ele>13067.690400</ele>
+   <sym>Tree</sym>
+   <time>2002-11-06T26:11:30</time>
+ </wpt><wpt lat="-124.744909" lon="48.166642">
+   <name>045</name>
+   <ele>14173.504800</ele>
+   <sym>Crossroads</sym>
+   <time>2003-11-06T26:13:43</time>
+ </wpt><wpt lat="-62.096256" lon="38.345033">
+   <name>M001</name>
+   <ele>17087.088000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T01:10:58</time>
+ </wpt><wpt lat="-61.767296" lon="38.346318">
+   <name>M002</name>
+   <ele>17102.632800</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T01:12:08</time>
+ </wpt><wpt lat="-62.400461" lon="38.343845">
+   <name>M003</name>
+   <ele>17073.067200</ele>
+   <sym>Crossroads</sym>
+   <time>2000-11-05T01:13:00</time>
+ </wpt><wpt lat="-62.147456" lon="38.344833">
+   <name>M004</name>
+   <ele>17084.954400</ele>
+   <sym>Road Fork</sym>
+   <time>2000-11-05T01:14:09</time>
+ </wpt><wpt lat="-60.120371" lon="38.352752">
+   <name>M012</name>
+   <ele>17179.137600</ele>
+   <sym>Crossroads</sym>
+   <time>2001-11-05T02:13:40</time>
+ </wpt><wpt lat="-60.302976" lon="38.352038">
+   <name>M013</name>
+   <ele>17170.603200</ele>
+   <sym>Crossroads</sym>
+   <time>2001-11-05T02:13:50</time>
+ </wpt><wpt lat="-60.727936" lon="38.350378">
+   <name>M014</name>
+   <ele>17150.791200</ele>
+   <sym>Road Fork</sym>
+   <time>2000-11-05T02:14:24</time>
+ </wpt><wpt lat="-60.979686" lon="38.349395">
+   <name>M018</name>
+   <ele>17139.208800</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:49</time>
+ </wpt><wpt lat="-61.288141" lon="38.348190">
+   <name>M019</name>
+   <ele>17124.883200</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:54</time>
+ </wpt><wpt lat="-61.247181" lon="38.348350">
+   <name>M020</name>
+   <ele>17126.712000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:01</time>
+ </wpt><wpt lat="-61.248461" lon="38.348345">
+   <name>M021</name>
+   <ele>17126.712000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:01</time>
+ </wpt><wpt lat="123.663718" lon="37.392937">
+   <name>M024</name>
+   <ele>5751.271200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:47</time>
+ </wpt><wpt lat="123.006234" lon="37.390368">
+   <name>M025</name>
+   <ele>5720.791200</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T04:11:28</time>
+ </wpt><wpt lat="122.291994" lon="37.387578">
+   <name>M029</name>
+   <ele>5687.568000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:31</time>
+ </wpt><wpt lat="122.931994" lon="37.390078">
+   <name>M033</name>
+   <ele>5717.133600</ele>
+   <sym>Bird</sym>
+   <time>2000-11-05T06:17:37</time>
+ </wpt><wpt lat="51.131366" lon="48.853658">
+   <name>M034</name>
+   <ele>2378.049600</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:38</time>
+ </wpt><wpt lat="50.884736" lon="48.852695">
+   <name>M035</name>
+   <ele>2366.467200</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:41</time>
+ </wpt><wpt lat="50.586086" lon="48.851528">
+   <name>M036</name>
+   <ele>2352.446400</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:48</time>
+ </wpt><wpt lat="50.730726" lon="48.852093">
+   <name>M037</name>
+   <ele>2359.152000</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:49</time>
+ </wpt><wpt lat="49.303936" lon="48.846520">
+   <name>M038</name>
+   <ele>2293.010400</ele>
+   <sym>Tower</sym>
+   <time>2002-11-05T22:20:04</time>
+ </wpt><wpt lat="49.152051" lon="48.845927">
+   <name>M039</name>
+   <ele>2286.000000</ele>
+   <sym>Tower</sym>
+   <time>2002-11-05T22:20:04</time>
+ </wpt><wpt lat="49.020646" lon="48.845413">
+   <name>M040</name>
+   <ele>2279.599200</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T23:19:31</time>
+ </wpt><wpt lat="49.141402" lon="48.845885">
+   <name>M042</name>
+   <ele>2285.390400</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-06T06:19:16</time>
+ </wpt><wpt lat="80.533888" lon="55.679398">
+   <name>M046</name>
+   <ele>3745.382400</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T07:15:00</time>
+ </wpt><wpt lat="80.531328" lon="55.679388">
+   <name>M047</name>
+   <ele>3745.382400</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T07:15:00</time>
+ </wpt><wpt lat="74.725683" lon="55.656710">
+   <name>M048</name>
+   <ele>3475.329600</ele>
+   <sym>Pole</sym>
+   <time>2000-13-05T10:08:59</time>
+ </wpt><wpt lat="133.738342" lon="52.531785">
+   <name>M049</name>
+   <ele>6219.748800</ele>
+   <sym>Bird</sym>
+   <time>2000-13-05T18:17:33</time>
+ </wpt><wpt lat="133.748147" lon="52.531823">
+   <name>M050</name>
+   <ele>6220.358400</ele>
+   <sym>Bird</sym>
+   <time>2000-13-05T18:17:33</time>
+ </wpt><wpt lat="133.758822" lon="52.531865">
+   <name>M051</name>
+   <ele>6220.663200</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:29</time>
+ </wpt><wpt lat="133.760077" lon="52.531870">
+   <name>M052</name>
+   <ele>6220.968000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:30</time>
+ </wpt><wpt lat="133.751987" lon="52.531838">
+   <name>M053</name>
+   <ele>6220.358400</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:31</time>
+ </wpt><wpt lat="133.731072" lon="52.531757">
+   <name>M054</name>
+   <ele>6219.444000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:32</time>
+ </wpt><wpt lat="133.770752" lon="52.531912">
+   <name>M055</name>
+   <ele>6221.272800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:35</time>
+ </wpt><wpt lat="133.745587" lon="52.531813">
+   <name>M056</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:35</time>
+ </wpt><wpt lat="133.740467" lon="52.531793">
+   <name>M057</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:36</time>
+ </wpt><wpt lat="133.736192" lon="52.531777">
+   <name>M058</name>
+   <ele>6219.748800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.735782" lon="52.531775">
+   <name>M059</name>
+   <ele>6219.748800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.741747" lon="52.531798">
+   <name>M060</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.731942" lon="52.531760">
+   <name>M061</name>
+   <ele>6219.444000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="132.088832" lon="52.525342">
+   <name>M062</name>
+   <ele>6143.244000</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T20:15:42</time>
+ </wpt><wpt lat="130.654387" lon="52.519738">
+   <name>M063</name>
+   <ele>6076.492800</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T20:15:49</time>
+ </wpt><wpt lat="127.137357" lon="52.506000">
+   <name>M064</name>
+   <ele>5912.815200</ele>
+   <sym>Turn Left</sym>
+   <time>2000-13-05T20:16:16</time>
+ </wpt><wpt lat="126.988032" lon="52.505417">
+   <name>M065</name>
+   <ele>5905.804800</ele>
+   <sym>Turn Left</sym>
+   <time>2000-13-05T20:16:18</time>
+ </wpt><wpt lat="-100.529869" lon="48.261232">
+   <name>M066</name>
+   <ele>15299.740800</ele>
+   <sym>Phone</sym>
+   <time>2002-13-07T21:07:29</time>
+ </wpt><wpt lat="-100.125798" lon="48.262810">
+   <name>M067</name>
+   <ele>15318.638400</ele>
+   <sym>Tree</sym>
+   <time>2001-13-07T21:11:52</time>
+ </wpt><wpt lat="-110.329984" lon="46.545228">
+   <name>M068</name>
+   <ele>14843.760000</ele>
+   <sym>Pole</sym>
+   <time>2026-14-08T04:08:50</time>
+ </wpt><wpt lat="-117.633229" lon="46.516700">
+   <name>M069</name>
+   <ele>14504.212800</ele>
+   <sym>Pole</sym>
+   <time>2031-14-08T05:08:27</time>
+ </wpt><wpt lat="-61.552256" lon="38.347158">
+   <name>001</name>
+   <ele>17112.386400</ele>
+   <sym>Fuel</sym>
+   <time>2000-11-05T01:06:23</time>
+ </wpt><wpt lat="-60.698931" lon="38.350492">
+   <name>005</name>
+   <ele>17152.315200</ele>
+   <sym>3D House</sym>
+   <time>2001-18-05T29:18:35</time>
+ </wpt><wpt lat="-62.755456" lon="38.342458">
+   <name>006</name>
+   <ele>17056.608000</ele>
+   <sym>Turn Left</sym>
+   <time>2000-11-05T01:16:57</time>
+ </wpt><wpt lat="-62.917581" lon="38.341825">
+   <name>007</name>
+   <ele>17048.988000</ele>
+   <sym>Pole</sym>
+   <time>2000-11-05T02:08:09</time>
+ </wpt><wpt lat="-60.451456" lon="38.351458">
+   <name>008</name>
+   <ele>17163.592800</ele>
+   <sym>Mountain</sym>
+   <time>2000-11-05T02:09:04</time>
+ </wpt><wpt lat="-57.750656" lon="38.362008">
+   <name>009</name>
+   <ele>17289.170400</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T02:10:27</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>010</name>
+   <ele>17000.829600</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T02:12:14</time>
+ </wpt><wpt lat="-60.477056" lon="38.351358">
+   <name>011</name>
+   <ele>17162.373600</ele>
+   <sym>Crossroads</sym>
+   <time>2000-11-05T02:13:31</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>015</name>
+   <ele>17000.829600</ele>
+   <sym>Turn Right</sym>
+   <time>2000-11-05T02:15:26</time>
+ </wpt><wpt lat="-62.311731" lon="38.344192">
+   <name>016</name>
+   <ele>17077.029600</ele>
+   <sym>Turn Right</sym>
+   <time>2000-11-05T02:15:53</time>
+ </wpt><wpt lat="-60.997581" lon="38.349325">
+   <name>017</name>
+   <ele>17138.294400</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:42</time>
+ </wpt><wpt lat="-63.950131" lon="38.337792">
+   <name>022</name>
+   <ele>17000.829600</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:45</time>
+ </wpt><wpt lat="121.006874" lon="37.382558">
+   <name>023</name>
+   <ele>5627.827200</ele>
+   <sym>Mountain</sym>
+   <time>2000-11-05T04:09:49</time>
+ </wpt><wpt lat="122.444749" lon="37.388175">
+   <name>026</name>
+   <ele>5694.578400</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:05</time>
+ </wpt><wpt lat="121.006874" lon="37.382558">
+   <name>027</name>
+   <ele>5627.827200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:03</time>
+ </wpt><wpt lat="121.301274" lon="37.383708">
+   <name>028</name>
+   <ele>5641.543200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:28</time>
+ </wpt><wpt lat="121.540198" lon="37.384642">
+   <name>030</name>
+   <ele>5652.516000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T05:10:02</time>
+ </wpt><wpt lat="120.947149" lon="37.382325">
+   <name>031</name>
+   <ele>5625.084000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T05:10:14</time>
+ </wpt><wpt lat="118.600474" lon="37.373158">
+   <name>032</name>
+   <ele>5515.660800</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T06:10:30</time>
+ </wpt><wpt lat="-20.441958" lon="48.574075">
+   <name>041</name>
+   <ele>19024.396800</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T27:12:49</time>
+ </wpt><wpt lat="-148.271309" lon="48.074742">
+   <name>043</name>
+   <ele>13079.272800</ele>
+   <sym>Tree</sym>
+   <time>2000-11-06T26:11:22</time>
+ </wpt><wpt lat="-148.523034" lon="48.073758">
+   <name>044</name>
+   <ele>13067.690400</ele>
+   <sym>Tree</sym>
+   <time>2002-11-06T26:11:30</time>
+ </wpt><wpt lat="-124.744909" lon="48.166642">
+   <name>045</name>
+   <ele>14173.504800</ele>
+   <sym>Crossroads</sym>
+   <time>2003-11-06T26:13:43</time>
+ </wpt><wpt lat="-62.096256" lon="38.345033">
+   <name>M001</name>
+   <ele>17087.088000</ele>
+   <sym>Water</sym>
+   <time>2000-11-05T01:10:58</time>
+ </wpt><wpt lat="-61.767296" lon="38.346318">
+   <name>M002</name>
+   <ele>17102.632800</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T01:12:08</time>
+ </wpt><wpt lat="-62.400461" lon="38.343845">
+   <name>M003</name>
+   <ele>17073.067200</ele>
+   <sym>Crossroads</sym>
+   <time>2000-11-05T01:13:00</time>
+ </wpt><wpt lat="-62.147456" lon="38.344833">
+   <name>M004</name>
+   <ele>17084.954400</ele>
+   <sym>Road Fork</sym>
+   <time>2000-11-05T01:14:09</time>
+ </wpt><wpt lat="-60.120371" lon="38.352752">
+   <name>M012</name>
+   <ele>17179.137600</ele>
+   <sym>Crossroads</sym>
+   <time>2001-11-05T02:13:40</time>
+ </wpt><wpt lat="-60.302976" lon="38.352038">
+   <name>M013</name>
+   <ele>17170.603200</ele>
+   <sym>Crossroads</sym>
+   <time>2001-11-05T02:13:50</time>
+ </wpt><wpt lat="-60.727936" lon="38.350378">
+   <name>M014</name>
+   <ele>17150.791200</ele>
+   <sym>Road Fork</sym>
+   <time>2000-11-05T02:14:24</time>
+ </wpt><wpt lat="-60.979686" lon="38.349395">
+   <name>M018</name>
+   <ele>17139.208800</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:49</time>
+ </wpt><wpt lat="-61.288141" lon="38.348190">
+   <name>M019</name>
+   <ele>17124.883200</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T03:11:54</time>
+ </wpt><wpt lat="-61.247181" lon="38.348350">
+   <name>M020</name>
+   <ele>17126.712000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:01</time>
+ </wpt><wpt lat="-61.248461" lon="38.348345">
+   <name>M021</name>
+   <ele>17126.712000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T03:12:01</time>
+ </wpt><wpt lat="123.663718" lon="37.392937">
+   <name>M024</name>
+   <ele>5751.271200</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:47</time>
+ </wpt><wpt lat="123.006234" lon="37.390368">
+   <name>M025</name>
+   <ele>5720.791200</ele>
+   <sym>Tree</sym>
+   <time>2000-11-05T04:11:28</time>
+ </wpt><wpt lat="122.291994" lon="37.387578">
+   <name>M029</name>
+   <ele>5687.568000</ele>
+   <sym>Road Narrows</sym>
+   <time>2000-11-05T04:12:31</time>
+ </wpt><wpt lat="122.931994" lon="37.390078">
+   <name>M033</name>
+   <ele>5717.133600</ele>
+   <sym>Bird</sym>
+   <time>2000-11-05T06:17:37</time>
+ </wpt><wpt lat="51.131366" lon="48.853658">
+   <name>M034</name>
+   <ele>2378.049600</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:38</time>
+ </wpt><wpt lat="50.884736" lon="48.852695">
+   <name>M035</name>
+   <ele>2366.467200</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:41</time>
+ </wpt><wpt lat="50.586086" lon="48.851528">
+   <name>M036</name>
+   <ele>2352.446400</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:48</time>
+ </wpt><wpt lat="50.730726" lon="48.852093">
+   <name>M037</name>
+   <ele>2359.152000</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T22:19:49</time>
+ </wpt><wpt lat="49.303936" lon="48.846520">
+   <name>M038</name>
+   <ele>2293.010400</ele>
+   <sym>Tower</sym>
+   <time>2002-11-05T22:20:04</time>
+ </wpt><wpt lat="49.152051" lon="48.845927">
+   <name>M039</name>
+   <ele>2286.000000</ele>
+   <sym>Tower</sym>
+   <time>2002-11-05T22:20:04</time>
+ </wpt><wpt lat="49.020646" lon="48.845413">
+   <name>M040</name>
+   <ele>2279.599200</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-05T23:19:31</time>
+ </wpt><wpt lat="49.141402" lon="48.845885">
+   <name>M042</name>
+   <ele>2285.390400</ele>
+   <sym>Trig Point</sym>
+   <time>2002-11-06T06:19:16</time>
+ </wpt><wpt lat="80.533888" lon="55.679398">
+   <name>M046</name>
+   <ele>3745.382400</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T07:15:00</time>
+ </wpt><wpt lat="80.531328" lon="55.679388">
+   <name>M047</name>
+   <ele>3745.382400</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T07:15:00</time>
+ </wpt><wpt lat="74.725683" lon="55.656710">
+   <name>M048</name>
+   <ele>3475.329600</ele>
+   <sym>Pole</sym>
+   <time>2000-13-05T10:08:59</time>
+ </wpt><wpt lat="133.738342" lon="52.531785">
+   <name>M049</name>
+   <ele>6219.748800</ele>
+   <sym>Bird</sym>
+   <time>2000-13-05T18:17:33</time>
+ </wpt><wpt lat="133.748147" lon="52.531823">
+   <name>M050</name>
+   <ele>6220.358400</ele>
+   <sym>Bird</sym>
+   <time>2000-13-05T18:17:33</time>
+ </wpt><wpt lat="133.758822" lon="52.531865">
+   <name>M051</name>
+   <ele>6220.663200</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:29</time>
+ </wpt><wpt lat="133.760077" lon="52.531870">
+   <name>M052</name>
+   <ele>6220.968000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:30</time>
+ </wpt><wpt lat="133.751987" lon="52.531838">
+   <name>M053</name>
+   <ele>6220.358400</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:31</time>
+ </wpt><wpt lat="133.731072" lon="52.531757">
+   <name>M054</name>
+   <ele>6219.444000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:32</time>
+ </wpt><wpt lat="133.770752" lon="52.531912">
+   <name>M055</name>
+   <ele>6221.272800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:35</time>
+ </wpt><wpt lat="133.745587" lon="52.531813">
+   <name>M056</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:35</time>
+ </wpt><wpt lat="133.740467" lon="52.531793">
+   <name>M057</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:36</time>
+ </wpt><wpt lat="133.736192" lon="52.531777">
+   <name>M058</name>
+   <ele>6219.748800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.735782" lon="52.531775">
+   <name>M059</name>
+   <ele>6219.748800</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.741747" lon="52.531798">
+   <name>M060</name>
+   <ele>6220.053600</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="133.731942" lon="52.531760">
+   <name>M061</name>
+   <ele>6219.444000</ele>
+   <sym>3D House</sym>
+   <time>2000-13-05T18:18:39</time>
+ </wpt><wpt lat="132.088832" lon="52.525342">
+   <name>M062</name>
+   <ele>6143.244000</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T20:15:42</time>
+ </wpt><wpt lat="130.654387" lon="52.519738">
+   <name>M063</name>
+   <ele>6076.492800</ele>
+   <sym>Turn Right</sym>
+   <time>2000-13-05T20:15:49</time>
+ </wpt><wpt lat="127.137357" lon="52.506000">
+   <name>M064</name>
+   <ele>5912.815200</ele>
+   <sym>Turn Left</sym>
+   <time>2000-13-05T20:16:16</time>
+ </wpt><wpt lat="126.988032" lon="52.505417">
+   <name>M065</name>
+   <ele>5905.804800</ele>
+   <sym>Turn Left</sym>
+   <time>2000-13-05T20:16:18</time>
+ </wpt><wpt lat="-100.529869" lon="48.261232">
+   <name>M066</name>
+   <ele>15299.740800</ele>
+   <sym>Phone</sym>
+   <time>2002-13-07T21:07:29</time>
+ </wpt><wpt lat="-100.125798" lon="48.262810">
+   <name>M067</name>
+   <ele>15318.638400</ele>
+   <sym>Tree</sym>
+   <time>2001-13-07T21:11:52</time>
+ </wpt><wpt lat="-110.329984" lon="46.545228">
+   <name>M068</name>
+   <ele>14843.760000</ele>
+   <sym>Pole</sym>
+   <time>2026-14-08T04:08:50</time>
+ </wpt><wpt lat="-117.633229" lon="46.516700">
+   <name>M069</name>
+   <ele>14504.212800</ele>
+   <sym>Pole</sym>
+   <time>2031-14-08T05:08:27</time>
+ </wpt></gpx>

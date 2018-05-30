@@ -30,7 +30,7 @@ int navilink_create_packet(uint8_t* dst, uint8_t type, const uint8_t* payload, u
 
   // If packet is too big, skip and fail.
   if (packet_length > NAVILINK_MAX_PAYLOAD_SIZE) {
-    return -1;
+    return NAVILINK_ERROR_PAYLOAD;
   }
 
   // Copy start bytes
@@ -65,7 +65,7 @@ int navilink_read_packet(NavilinkPacket* packet, const uint8_t* src)
   memcpy(&start, src, 2);
 
   if (start != startBytes) {
-    return -1;
+    return NAVILINK_ERROR_INVALID_START_BYTE;
   }
 
   // Get size
@@ -75,7 +75,7 @@ int navilink_read_packet(NavilinkPacket* packet, const uint8_t* src)
   uint16_t end = 0;
   memcpy(&end, src + 6 + packet->payload_length, 2);
   if (end != endBytes) {
-    return -1;
+    return NAVILINK_ERROR_INVALID_END_BYTE;
   }
 
   // Get payload
@@ -87,7 +87,7 @@ int navilink_read_packet(NavilinkPacket* packet, const uint8_t* src)
 
   uint16_t computed_checksum = navilink_compute_checksum(packet->payload, packet->payload_length);
   if (checksum != computed_checksum) {
-    return -1;
+    return NAVILINK_ERROR_CHECKSUM;
   }
 
   packet->type = packet->payload[0];

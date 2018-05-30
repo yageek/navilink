@@ -281,8 +281,7 @@ int navilink_query_information(NavilinkDevice* device, NavilinkInformation* info
     return result;
   }
 
-  memcpy(information, &device->response_packet.payload[0], device->response_packet.payload_length);
-  return 0;
+  return navilink_read_informations(information, &device->response_packet.payload[0], device->response_packet.payload_length);
 }
 
 int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_version)
@@ -291,6 +290,11 @@ int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_versio
   if (result < 0) {
     return result;
   }
+
+  if (device->response_packet.payload_length < 1) {
+    return -1;
+  }
+
   uint8_t value = 0;
   memcpy(&value, &device->response_packet.payload[0], 1);
   *firmware_version = value;
@@ -317,15 +321,15 @@ int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int quer
   }
 
   if (device->response_packet.type == NAVILINK_PID_DATA) {
-
     for (unsigned int i = 0; i < query_length; i++) {
-      memcpy(&waypoint[i], &device->response_packet.payload[0] + i * sizeof(NavilinkWaypoint), sizeof(NavilinkWaypoint));
+
+      // Copy buffer to waypoint
+   
+      uint8_t *buff = &device->response_packet.payload[0] + i*NAVILINK_WAYPOINT_PAYLOAD_LENGTH;
+      navilink_read_waypoint(&waypoint[i], buff, NAVILINK_WAYPOINT_PAYLOAD_LENGTH);
     }
-
     return 0;
-  }
-
-  else if (device->response_packet.type == NAVILINK_PID_NAK) {
+  } else if (device->response_packet.type == NAVILINK_PID_NAK) {
     waypoint = NULL;
     return 0;
   }
