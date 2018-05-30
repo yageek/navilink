@@ -167,10 +167,25 @@ void test_waypoint_decode() {
   if (navilink_read_waypoint(&wpt, packet.payload, packet.payload_length) < 0) CU_FAIL_FATAL("Error read waypoint");
   // 00 40 00 00 30 30 31 00 20 20 00 00 DF 4F DB 16
   // 52 DE B6 FF 00 00 0B 05 01 06 17 10 00 00 00 7E
-  CU_ASSERT_EQUAL(wpt.recordType, 0x4000);
-  CU_ASSERT_EQUAL(wpt.waypointID, 0x0000);
+
   CU_ASSERT_STRING_EQUAL(wpt.waypointName, "001");
   CU_ASSERT_EQUAL(wpt.waypointID, 0x0000);
+
+
+  NavilinkDateTime datetime = wpt.datetime;
+  CU_ASSERT_EQUAL(datetime.year, 0x0B);
+  CU_ASSERT_EQUAL(datetime.month, 0x05);
+  CU_ASSERT_EQUAL(datetime.day, 0x01);
+  CU_ASSERT_EQUAL(datetime.hour, 0x06);
+  CU_ASSERT_EQUAL(datetime.minute, 0x17);
+  CU_ASSERT_EQUAL(datetime.second, 0x10);
+
+  NavilinkPosition pos = wpt.position;
+  CU_ASSERT_EQUAL(pos.latitude, 0x16DB4FDF);
+  CU_ASSERT_EQUAL(pos.longitude, 0xFFB6DE52);
+  CU_ASSERT_EQUAL(pos.altitude, 0x00);
+
+  CU_ASSERT_EQUAL(wpt.symbolType, 0x00);
 }
 
 int main(int argc, char** argv)

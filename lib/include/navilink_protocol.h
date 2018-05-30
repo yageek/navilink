@@ -145,7 +145,7 @@ struct NavilinkDateTime {
  *	\brief Describe the waypoint element contained in the data logger.
  */
 struct NavilinkWaypoint {
-  uint16_t recordType; /**< reserved. default 0x00 0x40*/
+  //uint16_t recordType; /**< reserved. default 0x00 0x40*/
   uint16_t waypointID; /**< Range 0..999*/
   uint8_t waypointName[7]; /**< null-terminated- string,[ 0 .. 9 , , A .. Z ]*/
   //uint8_t reserved;

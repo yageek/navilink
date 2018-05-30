@@ -65,21 +65,20 @@ int navilink_read_waypoint(NavilinkWaypoint *waypoint, uint8_t *buffer, size_t b
         return -1;
     }
 
-    _read16(&waypoint->recordType, &buffer[0]);
     _read16(&waypoint->waypointID, &buffer[2]);
     memcpy(&waypoint->waypointName, &buffer[4], 7);
     // Gap for reserved
 
-    int result = navilink_read_position(&waypoint->position, &buffer[11], buffer_len - 11);
+    int result = navilink_read_position(&waypoint->position, &buffer[12], buffer_len - 12);
     if ( result < 0) {
         return result;
     }
 
-    result = navilink_read_datetime(&waypoint->datetime, &buffer[21], buffer_len - 21);
+    result = navilink_read_datetime(&waypoint->datetime, &buffer[22], buffer_len - 22);
     if ( result < 0) {
         return result;
     }
 
-    memcpy(&waypoint->symbolType, &buffer[25], 1);
+    memcpy(&waypoint->symbolType, &buffer[28], 1);
     return 0;
 }
