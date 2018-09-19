@@ -86,25 +86,28 @@ int main(int argc, char** argv)
     perror("Can not create file");
     return -1;
   }
-  NavilinkWaypoint* waypoint_array = malloc(NAVILINK_MAX_WAYPOINT_QUERY_LENGTH * sizeof(NavilinkWaypoint));
-  for (unsigned int download_pass = 0; download_pass < number_download; download_pass++) {
 
-    printf("Donwload completion %i %% \n", (int)((double)download_pass / (double)number_download * 100.0));
-    for (unsigned int i = 0; i < infos.totalWaypoint; i++) {
-      NavilinkWaypoint* waypoint = &waypoint_array[i];
-      result = navilink_query_waypoint(&device, i, 1, waypoint);
+  NavilinkWaypoint waypoint_array[NAVILINK_MAX_WAYPOINT_QUERY_LENGTH * sizeof(NavilinkWaypoint)] = { 0 };
+  for (unsigned int i = 0; i < number_download; i++) {
 
-      if (result < 0) {
-        printf("An error occurs for waypoint %i\n", i);
-        continue;
-      }
-      navilink_gpx_write(&file, waypoint);
+    printf("Download pass %i/%i \n", i + 1, number_download);
+    // Format outputs
+    NavilinkWaypoint* waypoint
+        = &waypoint_array[i * NAVILINK_MAX_WAYPOINT_QUERY_LENGTH];
+    result = navilink_query_waypoint(&device, i * NAVILINK_MAX_WAYPOINT_QUERY_LENGTH, NAVILINK_MAX_WAYPOINT_QUERY_LENGTH, waypoint);
+
+    if (result < 0) {
+      printf("An error occurs for waypoint %i\n", i);
+      continue;
+    }
+
+    for (unsigned int cursor = i * NAVILINK_MAX_WAYPOINT_QUERY_LENGTH; cursor < i * NAVILINK_MAX_WAYPOINT_QUERY_LENGTH + result; cursor++) {
+      navilink_gpx_write(&file, &waypoint_array[cursor]);
     }
   }
 
   navilink_gpx_close(&file);
   navilink_close_device(&device);
-  free(waypoint_array);
   printf("Successfully created file at: %s \n", output_gpx);
   return 0;
 }

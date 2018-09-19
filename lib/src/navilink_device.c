@@ -237,6 +237,8 @@ int navilink_read_device(NavilinkDevice* device, NavilinkPacket* packet)
 
   uint16_t packet_length = 0;
   memcpy(&packet_length, &buff[2], 2);
+  packet_length = _le16_to_host(packet_length);
+
   result = sp_blocking_read(device->serial_port, &buff[4], packet_length + 4, 1000);
   if (result < 0) {
     return result;
@@ -303,6 +305,7 @@ int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_versio
 
 int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int query_length, NavilinkWaypoint* waypoint)
 {
+  int num_wpt = 0;
   if (query_length > NAVILINK_MAX_WAYPOINT_QUERY_LENGTH) {
     printf("query_length can not be greater than %i \n", NAVILINK_MAX_WAYPOINT_QUERY_LENGTH);
     return -1;
@@ -321,19 +324,20 @@ int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int quer
   }
 
   if (device->response_packet.type == NAVILINK_PID_DATA) {
-    for (unsigned int i = 0; i < query_length; i++) {
+
+    num_wpt = (device->response_packet.payload_length - 1) / query_length;
+    for (unsigned int i = 0; i < num_wpt; i++) {
 
       // Copy buffer to waypoint
-   
-      uint8_t *buff = &device->response_packet.payload[0] + i*NAVILINK_WAYPOINT_PAYLOAD_LENGTH;
+      uint8_t* buff = &device->response_packet.payload[i * NAVILINK_WAYPOINT_PAYLOAD_LENGTH];
       navilink_read_waypoint(&waypoint[i], buff, NAVILINK_WAYPOINT_PAYLOAD_LENGTH);
     }
-    return 0;
-  } else if (device->response_packet.type == NAVILINK_PID_NAK) {
+  }
+  else if (device->response_packet.type == NAVILINK_PID_NAK) {
     waypoint = NULL;
     return 0;
   }
-  return -1;
+  return num_wpt;
 }
 
 int navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id)

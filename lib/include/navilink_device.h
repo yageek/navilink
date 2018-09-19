@@ -90,7 +90,7 @@ int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_versio
  * @param waypoint_index The index of the waypoint to fetch.
  * @param query_length The number of waypoint to fetch. Can not be greater than 32.
  * @param waypoint A pointer to a an buffer of waypoint of query_length size.
- * @return int 
+ * @return int The number of filled waypoint inside the buffer;
  */
 int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int query_length, NavilinkWaypoint* waypoint);
 
