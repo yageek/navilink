@@ -5,6 +5,7 @@
 
 #include <libserialport.h>
 #include <stdlib.h>
+
 /**
  * @brief A serialport to connect to.
  * 
@@ -26,6 +27,7 @@ typedef struct {
   int firmware_version;
   NavilinkPacket response_packet;
   int last_error_code;
+  char last_message_str[255];
 } NavilinkDevice;
 
 /**
@@ -34,14 +36,14 @@ typedef struct {
  * @param list A pointer to retrieve the list. If an error occurs, the pointer will be set to NULL.
  * @return int A negative response is send in case of error.
  */
-int navilink_get_serial_list(NavilinkSerialPort*** list);
+NavilinkResult navilink_get_serial_list(NavilinkSerialPort*** list);
 /**
  * @brief Deallocates a list of `NavilinkSerialPort`
  * 
  * @param list The pointer to the list to deallocate
  * @return int A negative response is send in case of error.
  */
-int navilink_free_serial_list(NavilinkSerialPort** list);
+NavilinkResult navilink_free_serial_list(NavilinkSerialPort** list);
 
 /**
  * @brief Open a device from a NavilinkSerialPort returned by `navilink_get_serial_list`.
@@ -50,7 +52,7 @@ int navilink_free_serial_list(NavilinkSerialPort** list);
  * @param device The device to inialize. Can not be NULL;
  * @return int A negative response is send in case of error.
  */
-int navilink_open_device(NavilinkSerialPort* serial_port, NavilinkDevice* device);
+NavilinkResult navilink_open_device(NavilinkSerialPort* serial_port, NavilinkDevice* device);
 /**
  * @brief Open a connection with a device from the serial port name.
  * 
@@ -58,14 +60,14 @@ int navilink_open_device(NavilinkSerialPort* serial_port, NavilinkDevice* device
  * @param device The device to inialize. Can not be NULL;
  * @return int A negative response is send in case of error.
  */
-int navilink_open_device_from_name(const char* serial_port_name, NavilinkDevice* device);
+NavilinkResult navilink_open_device_from_name(const char* serial_port_name, NavilinkDevice* device);
 /**
  * @brief Close the connection with the provided device.
  * 
  * @param device A pointer to a `NavilinkDevice`device
  * @return int A negative response is send in case of error.
  */
-int navilink_close_device(NavilinkDevice* device);
+NavilinkResult navilink_close_device(NavilinkDevice* device);
 /**
  * @brief Query the informations about the device
  * 
@@ -73,7 +75,7 @@ int navilink_close_device(NavilinkDevice* device);
  * @param information 
  * @return int 
  */
-int navilink_query_information(NavilinkDevice* device, NavilinkInformation* information);
+NavilinkResult navilink_query_information(NavilinkDevice* device, NavilinkInformation* information);
 /**
  * @brief Get the firmware version.
  * 
@@ -81,7 +83,7 @@ int navilink_query_information(NavilinkDevice* device, NavilinkInformation* info
  * @param firmware_version
  * @return int 
  */
-int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_version);
+NavilinkResult navilink_query_firmware_version(NavilinkDevice* device, int* firmware_version);
 
 /**
  * @brief Query one or more waypoint from the device
@@ -92,8 +94,8 @@ int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_versio
  * @param waypoint A pointer to a an buffer of waypoint of query_length size.
  * @return int The number of filled waypoint inside the buffer;
  */
-int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int query_length, NavilinkWaypoint* waypoint);
+NavilinkResult navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int query_length, NavilinkWaypoint* waypoint);
 
-int navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id);
+NavilinkResult navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id);
 
 #endif

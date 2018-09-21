@@ -8,9 +8,14 @@
 #ifndef NAVILINK_PROTOCOL_H_INCLUDED
 #define NAVILINK_PROTOCOL_H_INCLUDED
 
-
 #include <stdint.h>
 #include <stdlib.h>
+
+typedef enum {
+  NavilinkOK = 0,
+  NavilinkErr = -1
+} NavilinkResult;
+
 /* Define all the predefined packets
 -> a0 a2 01 00  d6 d6 00 b0  b3
 <- a0 a2 01 00  0c 0c 00 b0  b3
@@ -173,12 +178,12 @@ struct NavilinkSubroute {
 struct NavilinkRoute {
   uint16_t recordType; /**< reserved, default 0x2000*/
   uint8_t routeID; /**< route ID:0..19,0xffff:null route ID*/
- // uint8_t reserved_1; /**< default 0x20 */
+  // uint8_t reserved_1; /**< default 0x20 */
   uint8_t routeName[14]; /**< string,[ 0 .. 9 , A .. Z , ]*/
- // uint8_t reserved[2];
- // uint32_t reserved_2;
- // uint32_t reserved_3;
- // uint16_t reserved_4;
+  // uint8_t reserved[2];
+  // uint32_t reserved_2;
+  // uint32_t reserved_3;
+  // uint16_t reserved_4;
   uint8_t flag; /**< reserved, default 0x7b */
   uint8_t mark; /**< reserved, default 0x77 */
   NavilinkSubroute subRoutes[9];
@@ -200,9 +205,8 @@ struct NavilinkTrackpoint {
   uint8_t tag2; /**< reserved, default 0x7e */
 };
 
-
-int navilink_read_informations(NavilinkInformation *information, uint8_t *buffer, size_t buffer_len);
-int navilink_read_datetime(NavilinkDateTime *datetime, uint8_t *buffer, size_t buffer_len);
-int navilink_read_position(NavilinkPosition *position, uint8_t *buffer, size_t buffer_len);
-int navilink_read_waypoint(NavilinkWaypoint *waypoint, uint8_t *buffer, size_t buffer_len);
+int navilink_read_informations(NavilinkInformation* information, uint8_t* buffer, size_t buffer_len);
+int navilink_read_datetime(NavilinkDateTime* datetime, uint8_t* buffer, size_t buffer_len);
+int navilink_read_position(NavilinkPosition* position, uint8_t* buffer, size_t buffer_len);
+int navilink_read_waypoint(NavilinkWaypoint* waypoint, uint8_t* buffer, size_t buffer_len);
 #endif // NAVILINK_PROTOCOL_H_INCLUDED

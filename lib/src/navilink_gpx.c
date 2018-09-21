@@ -71,23 +71,23 @@ const char* description_from_symbol(char symbol)
   return icon_table[symbol];
 }
 
-int navilink_gpx_create(const char* path, NavilinkGPXFile* file)
+NavilinkResult navilink_gpx_create(const char* path, NavilinkGPXFile* file)
 {
   assert(path != NULL);
 
   FILE* fd = fopen(path, "w");
   if (fd == NULL) {
-    return -1;
+    return NavilinkErr;
   }
 
   // Prefix
   fprintf(fd, "%s", __GPX_PREFIX);
 
   file->fd = fd;
-  return 0;
+  return NavilinkOK;
 }
 
-int navilink_gpx_write(NavilinkGPXFile* file, NavilinkWaypoint* waypoint)
+NavilinkResult navilink_gpx_write(NavilinkGPXFile* file, NavilinkWaypoint* waypoint)
 {
   FILE* fd = file->fd;
   double lat = (double)waypoint->position.latitude / 10000000;
@@ -102,12 +102,15 @@ int navilink_gpx_write(NavilinkGPXFile* file, NavilinkWaypoint* waypoint)
           description_from_symbol(waypoint->symbolType),
           date.year + 2000, date.month, date.day, date.hour, date.minute, date.second);
 
-  return 0;
+  return NavilinkOK;
 }
 
-int navilink_gpx_close(NavilinkGPXFile* file)
+NavilinkResult navilink_gpx_close(NavilinkGPXFile* file)
 {
   // Suffix
   fprintf(file->fd, "%s", __GPX_SUFFIX);
-  return fclose(file->fd);
+  if (fclose(file->fd) < 1) {
+    return NavilinkErr;
+  }
+  return NavilinkOK;
 }
