@@ -97,7 +97,7 @@ int main(int argc, char** argv)
     result = navilink_query_waypoint(&device, i * NAVILINK_MAX_WAYPOINT_QUERY_LENGTH, NAVILINK_MAX_WAYPOINT_QUERY_LENGTH, waypoint);
 
     if (result < 0) {
-      printf("An error occurs for waypoint %i\n", i);
+       perror(navilink_get_error_description(&device));
       continue;
     }
 
