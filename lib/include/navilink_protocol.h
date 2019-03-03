@@ -11,11 +11,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-typedef enum {
-  NavilinkOK = 0,
-  NavilinkErr = -1
-} NavilinkResult;
-
 /* Define all the predefined packets
 -> a0 a2 01 00  d6 d6 00 b0  b3
 <- a0 a2 01 00  0c 0c 00 b0  b3

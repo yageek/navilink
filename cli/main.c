@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 
   printf("Opening navilink on port: %s \n", port_name);
   NavilinkDevice device;
-  NavilinkResult result = navilink_open_device_from_name(port_name, &device);
+  int result = navilink_open_device_from_name(port_name, &device);
   if (result < 0) {
     perror(navilink_get_error_description(&device));
     return -1;

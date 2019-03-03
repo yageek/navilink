@@ -47,22 +47,22 @@ void DumpHex(const void* data, size_t size)
   }
 }
 
-NavilinkResult navilink_write_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length);
-NavilinkResult navilink_read_device(NavilinkDevice* device, NavilinkPacket* packet);
-NavilinkResult navilink_query_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length, NavilinkPacket* response);
+int navilink_write_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length);
+int navilink_read_device(NavilinkDevice* device, NavilinkPacket* packet);
+int navilink_query_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length, NavilinkPacket* response);
 
-NavilinkResult navilink_check_protocol(NavilinkDevice* device)
+int navilink_check_protocol(NavilinkDevice* device)
 {
   NavilinkPacket packet;
   int result = navilink_query_device(device, NAVILINK_PID_SYNC, NULL, 0, &packet);
   if (result < 0) {
-    return NavilinkErr;
+    return -1;
   }
 
   if (packet.type != NAVILINK_PID_ACK) {
-    return NavilinkErr;
+    return -1;
   }
-  return NavilinkOK;
+  return 0;
 }
 
 int navilink_open_sp_port(struct sp_port* port, NavilinkDevice* device)
@@ -108,7 +108,7 @@ int navilink_open_sp_port(struct sp_port* port, NavilinkDevice* device)
   device->event_set = event_set;
 
   //Check that this is a Navilink device
-  NavilinkResult res = navilink_check_protocol(device);
+  int res = navilink_check_protocol(device);
   if (res < 0) {
     goto error_clean_event_set;
   }
@@ -124,18 +124,18 @@ int navilink_open_sp_port(struct sp_port* port, NavilinkDevice* device)
   if (res < 0) {
     goto error_clean_event_set;
   }
-  return NavilinkOK;
+  return 0;
 error_clean_event_set:
   sp_free_event_set(event_set);
 error_clean_config:
   sp_free_config(config);
 error_cleanup_port:
   sp_free_port(port);
-  return NavilinkErr;
+  return -1;
 }
 
 /// PUBLIC
-NavilinkResult navilink_open_device(NavilinkSerialPort* serial_port, NavilinkDevice* device)
+int navilink_open_device(NavilinkSerialPort* serial_port, NavilinkDevice* device)
 {
   assert(serial_port != NULL);
   assert(device != NULL);
@@ -143,12 +143,12 @@ NavilinkResult navilink_open_device(NavilinkSerialPort* serial_port, NavilinkDev
   int result = navilink_open_sp_port(serial_port->serial_port, device);
   if (result < 0) {
     CATCH_LIBSERIAL_ERROR(device);
-    return NavilinkErr;
+    return -1;
   }
-  return NavilinkOK;
+  return 0;
 }
 
-NavilinkResult navilink_open_device_from_name(const char* serial_port_name, NavilinkDevice* device)
+int navilink_open_device_from_name(const char* serial_port_name, NavilinkDevice* device)
 {
   assert(serial_port_name != NULL);
   assert(serial_port_name != NULL);
@@ -163,23 +163,23 @@ NavilinkResult navilink_open_device_from_name(const char* serial_port_name, Navi
   if (result < 0) {
     goto serial_error;
   }
-  return NavilinkOK;
+  return 0;
 serial_error:
   CATCH_LIBSERIAL_ERROR(device);
-  return NavilinkErr;
+  return -1;
 }
 
-NavilinkResult navilink_close_device(NavilinkDevice* device)
+int navilink_close_device(NavilinkDevice* device)
 {
   int result = sp_close(device->serial_port);
   if (result < 0) {
     CATCH_LIBSERIAL_ERROR(device);
-    return NavilinkErr;
+    return -1;
   }
-  return NavilinkErr;
+  return -1;
 }
 
-NavilinkResult navilink_get_serial_list(NavilinkSerialPort*** list)
+int navilink_get_serial_list(NavilinkSerialPort*** list)
 {
   struct sp_port** sp_list = NULL;
   sp_list_ports(&sp_list);
@@ -218,10 +218,10 @@ NavilinkResult navilink_get_serial_list(NavilinkSerialPort*** list)
   *list = local_list;
 
 last_error:
-  return NavilinkErr;
+  return -1;
 }
 
-NavilinkResult navilink_free_serial_list(NavilinkSerialPort** list)
+int navilink_free_serial_list(NavilinkSerialPort** list)
 {
   NavilinkSerialPort** iter = &list[0];
   while (*iter) {
@@ -232,7 +232,7 @@ NavilinkResult navilink_free_serial_list(NavilinkSerialPort** list)
   return 0;
 }
 
-NavilinkResult navilink_write_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length)
+int navilink_write_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length)
 {
   assert(device != NULL);
   uint8_t* buff = (void*)(&device->buffer[0]);
@@ -241,7 +241,7 @@ NavilinkResult navilink_write_device(NavilinkDevice* device, uint8_t packet_type
   int bytes = navilink_create_packet(buff, packet_type, payload, payload_length);
   if (bytes < 0) {
     navilink_set_current_error(device, bytes, NULL);
-    return NavilinkErr;
+    return -1;
   }
 
 #if (__DEBUG_CMD)
@@ -257,14 +257,14 @@ NavilinkResult navilink_write_device(NavilinkDevice* device, uint8_t packet_type
   if (result < 0) {
     goto manage_serial_error;
   }
-  return NavilinkOK;
+  return 0;
 
 manage_serial_error:
   CATCH_LIBSERIAL_ERROR(device);
-  return NavilinkErr;
+  return -1;
 }
 
-NavilinkResult navilink_read_device(NavilinkDevice* device, NavilinkPacket* packet)
+int navilink_read_device(NavilinkDevice* device, NavilinkPacket* packet)
 {
   assert(device != NULL);
   uint8_t* buff = (void*)(&device->buffer[0]);
@@ -277,7 +277,7 @@ NavilinkResult navilink_read_device(NavilinkDevice* device, NavilinkPacket* pack
 
   if (buff[0] != NAVILINK_PACK_START1 && buff[1] != NAVILINK_PACK_START2) {
     navilink_set_current_error(device, NAVILINK_ERROR_INVALID_START_BYTE, NULL);
-    return NavilinkErr;
+    return -1;
   }
 
   uint16_t packet_length = 0;
@@ -297,21 +297,21 @@ NavilinkResult navilink_read_device(NavilinkDevice* device, NavilinkPacket* pack
 
 manage_serial_error:
   CATCH_LIBSERIAL_ERROR(device);
-  return NavilinkErr;
+  return -1;
 }
 
-NavilinkResult navilink_query_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length, NavilinkPacket* response)
+int navilink_query_device(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length, NavilinkPacket* response)
 {
   assert(device != NULL);
 
-  NavilinkResult result = navilink_write_device(device, packet_type, payload, payload_length);
+  int result = navilink_write_device(device, packet_type, payload, payload_length);
   if (result < 0) {
     return result;
   }
   return navilink_read_device(device, response);
 }
 
-NavilinkResult navilink_query_device_expect_result(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length, uint8_t type)
+int navilink_query_device_expect_result(NavilinkDevice* device, uint8_t packet_type, const uint8_t* payload, size_t payload_length, uint8_t type)
 {
   int result = navilink_query_device(device, packet_type, payload, payload_length, &device->response_packet);
   if (result < 0) {
@@ -322,12 +322,12 @@ NavilinkResult navilink_query_device_expect_result(NavilinkDevice* device, uint8
     char message[250];
     sprintf(message, "Unexpected Packet Type: %i \n", device->response_packet.type);
     navilink_set_current_error(device, NAVILINK_UNEXPECTED_PACKET_TYPE, message);
-    return NavilinkErr;
+    return -1;
   }
-  return NavilinkOK;
+  return 0;
 }
 
-NavilinkResult navilink_query_information(NavilinkDevice* device, NavilinkInformation* information)
+int navilink_query_information(NavilinkDevice* device, NavilinkInformation* information)
 {
   int result = navilink_query_device_expect_result(device, NAVILINK_PID_QRY_INFORMATION, NULL, 0, NAVILINK_PID_DATA);
   if (result < 0) {
@@ -337,30 +337,30 @@ NavilinkResult navilink_query_information(NavilinkDevice* device, NavilinkInform
   return navilink_read_informations(information, &device->response_packet.payload[0], device->response_packet.payload_length);
 }
 
-NavilinkResult navilink_query_firmware_version(NavilinkDevice* device, int* firmware_version)
+int navilink_query_firmware_version(NavilinkDevice* device, int* firmware_version)
 {
-  NavilinkResult result = navilink_query_device_expect_result(device, NAVILINK_PID_QRY_FW_VERSION, NULL, 0, NAVILINK_PID_DATA);
+  int result = navilink_query_device_expect_result(device, NAVILINK_PID_QRY_FW_VERSION, NULL, 0, NAVILINK_PID_DATA);
   if (result < 0) {
     return result;
   }
 
   if (device->response_packet.payload_length < 1) {
     navilink_set_current_error(device, NAVILINK_ERROR_PAYLOAD, NULL);
-    return NavilinkErr;
+    return -1;
   }
 
   uint8_t value = 0;
   memcpy(&value, &device->response_packet.payload[0], 1);
   *firmware_version = value;
-  return NavilinkOK;
+  return 0;
 }
 
-NavilinkResult navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int query_length, NavilinkWaypoint* waypoint)
+int navilink_query_waypoint(NavilinkDevice* device, int waypoint_index, int query_length, NavilinkWaypoint* waypoint)
 {
   int num_wpt = 0;
   if (query_length > NAVILINK_MAX_WAYPOINT_QUERY_LENGTH) {
     navilink_set_current_error(device, NAVILINK_ERROR_QUERY_LENGTH_TOO_BIG, NULL);
-    return NavilinkErr;
+    return -1;
   }
 
   uint8_t payload[7] = { 0 };
@@ -370,7 +370,7 @@ NavilinkResult navilink_query_waypoint(NavilinkDevice* device, int waypoint_inde
   memcpy(&payload[4], &query_length, 2);
   payload[6] = 0x01;
 
-  NavilinkResult result = navilink_query_device(device, NAVILINK_PID_QRY_WAYPOINTS, payload, 7, &device->response_packet);
+  int result = navilink_query_device(device, NAVILINK_PID_QRY_WAYPOINTS, payload, 7, &device->response_packet);
   if (result < 0) {
     return result;
   }
@@ -388,12 +388,12 @@ NavilinkResult navilink_query_waypoint(NavilinkDevice* device, int waypoint_inde
   else if (device->response_packet.type == NAVILINK_PID_NAK) {
     waypoint = NULL;
     navilink_set_current_error(device, NAVILINK_DEVICE_UNACKNOWLEDGE, NULL);
-    return NavilinkErr;
+    return -1;
   }
   return num_wpt;
 }
 
-NavilinkResult navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id)
+int navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id)
 {
   uint8_t payload[4] = { 0 };
   uint16_t id = waypoint_id;
@@ -405,17 +405,17 @@ NavilinkResult navilink_delete_waypoint(NavilinkDevice* device, int waypoint_id)
   }
 
   if (device->response_packet.type == NAVILINK_PID_ACK) {
-    return NavilinkOK;
+    return 0;
   }
   navilink_set_current_error(device, NAVILINK_DEVICE_UNACKNOWLEDGE, NULL);
-  return NavilinkErr;
+  return -1;
 }
 
 int navilink_query_route(NavilinkDevice* device, int route_index, NavilinkRoute* route)
 {
   if (route_index > NAVILINK_MAX_ROUTE_QUERY_LENGTH) {
     navilink_set_current_error(device, NAVILINK_ERROR_QUERY_LENGTH_TOO_BIG, NULL);
-    return NavilinkErr;
+    return -1;
   }
 
   uint8_t payload[7] = { 0 };
@@ -430,11 +430,11 @@ int navilink_query_route(NavilinkDevice* device, int route_index, NavilinkRoute*
 
   if (device->response_packet.type == NAVILINK_PID_DATA) {
     memcpy(route, &device->response_packet.payload[0], device->response_packet.payload_length);
-    return NavilinkOK;
+    return 0;
   }
   else if (device->response_packet.type == NAVILINK_PID_NAK) {
     route = NULL;
-    return NavilinkOK;
+    return 0;
   }
-  return NavilinkErr;
+  return -1;
 }
